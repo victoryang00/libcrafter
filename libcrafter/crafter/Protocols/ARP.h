@@ -49,20 +49,20 @@ namespace Crafter {
 
         void ReDefineActiveFields();
 
-        static const byte FieldHardwareType = 0;
-        static const byte FieldProtocolType = 1;
-        static const byte FieldHardwareLength = 2;
-        static const byte FieldProtocolLength = 3;
-        static const byte FieldOperation = 4;
-        static const byte FieldSenderMAC = 5;
-        static const byte FieldSenderIP = 6;
-        static const byte FieldTargetMAC = 7;
-        static const byte FieldTargetIP = 8;
+        static const byte_ FieldHardwareType = 0;
+        static const byte_ FieldProtocolType = 1;
+        static const byte_ FieldHardwareLength = 2;
+        static const byte_ FieldProtocolLength = 3;
+        static const byte_ FieldOperation = 4;
+        static const byte_ FieldSenderMAC = 5;
+        static const byte_ FieldSenderIP = 6;
+        static const byte_ FieldTargetMAC = 7;
+        static const byte_ FieldTargetIP = 8;
 
     public:
 		/* Operation Type */
-		static const byte Request = 1;
-		static const byte Reply = 2;
+		static const byte_ Request = 1;
+		static const byte_ Reply = 2;
 
 		enum { PROTO = 0x0806 };
 
@@ -76,11 +76,11 @@ namespace Crafter {
             SetFieldValue(FieldProtocolType,value);
         };
 
-        void SetHardwareLength(const byte& value) {
+        void SetHardwareLength(const byte_& value) {
             SetFieldValue(FieldHardwareLength,value);
         };
 
-        void SetProtocolLength(const byte& value) {
+        void SetProtocolLength(const byte_& value) {
             SetFieldValue(FieldProtocolLength,value);
         };
 
@@ -112,12 +112,12 @@ namespace Crafter {
             return GetFieldValue<short_word>(FieldProtocolType);
         };
 
-        byte  GetHardwareLength() const {
-            return GetFieldValue<byte>(FieldHardwareLength);
+        byte_  GetHardwareLength() const {
+            return GetFieldValue<byte_>(FieldHardwareLength);
         };
 
-        byte  GetProtocolLength() const {
-            return GetFieldValue<byte>(FieldProtocolLength);
+        byte_  GetProtocolLength() const {
+            return GetFieldValue<byte_>(FieldProtocolLength);
         };
 
         short_word  GetOperation() const {

@@ -31,8 +31,8 @@ using namespace Crafter;
 using namespace std;
 
 /* Some constant of the DHCP protocol */
-const byte DHCP::Request = 0x1;
-const byte DHCP::Reply = 0x2;
+const byte_ DHCP::Request = 0x1;
+const byte_ DHCP::Reply = 0x2;
 
 DHCP::DHCP() {
 

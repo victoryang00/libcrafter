@@ -58,25 +58,25 @@ namespace Crafter {
 
         void ReDefineActiveFields();
 
-		void ParseFromBuffer(const byte *buffer, size_t len);
+		void ParseFromBuffer(const byte_ *buffer, size_t len);
 
         void ParseLayerData(ParseInfo* info);
 
-        static const byte FieldIdentification = 0;
-        static const byte FieldQRFlag = 1;
-        static const byte FieldOpCode = 2;
-        static const byte FieldAAFlag = 3;
-        static const byte FieldTCFlag = 4;
-        static const byte FieldRDFlag = 5;
-        static const byte FieldRAFlag = 6;
-        static const byte FieldZFlag = 7;
-        static const byte FieldADFlag = 8;
-        static const byte FieldCDFlag = 9;
-        static const byte FieldRCode = 10;
-        static const byte FieldTotalQuestions = 11;
-        static const byte FieldTotalAnswer = 12;
-        static const byte FieldTotalAuthority = 13;
-        static const byte FieldTotalAdditional = 14;
+        static const byte_ FieldIdentification = 0;
+        static const byte_ FieldQRFlag = 1;
+        static const byte_ FieldOpCode = 2;
+        static const byte_ FieldAAFlag = 3;
+        static const byte_ FieldTCFlag = 4;
+        static const byte_ FieldRDFlag = 5;
+        static const byte_ FieldRAFlag = 6;
+        static const byte_ FieldZFlag = 7;
+        static const byte_ FieldADFlag = 8;
+        static const byte_ FieldCDFlag = 9;
+        static const byte_ FieldRCode = 10;
+        static const byte_ FieldTotalQuestions = 11;
+        static const byte_ FieldTotalAnswer = 12;
+        static const byte_ FieldTotalAuthority = 13;
+        static const byte_ FieldTotalAdditional = 14;
 
         void PrintPayload(std::ostream& str) const;
 
@@ -145,7 +145,7 @@ namespace Crafter {
 			short_word qclass;
 
 			/* Compressed domain name */
-			byte cqname[NS_MAXCDNAME];
+			byte_ cqname[NS_MAXCDNAME];
 			/* Size of the raw data of the query */
 			size_t size;
 
@@ -158,7 +158,7 @@ namespace Crafter {
 			DNSQuery(const std::string& qname = "");
 
 			/* Create the Query from raw data */
-			DNSQuery(const byte* raw_data);
+			DNSQuery(const byte_* raw_data);
 
 			/* Copy constructor */
 			DNSQuery(const DNSQuery& query);
@@ -180,7 +180,7 @@ namespace Crafter {
 			size_t GetSize() const;
 
 			/* Write raw data on the pointer */
-			size_t Write(byte* data_ptr) const;
+			size_t Write(byte_* data_ptr) const;
 
 			/* Print the DNS Query */
 			void Print(std::ostream &out = std::cout) const;
@@ -205,8 +205,8 @@ namespace Crafter {
 			std::string rdata;
 
 			/* Compressed domain name and RR data */
-			byte cqname[NS_MAXCDNAME];
-			byte crdata[NS_MAXCDNAME];
+			byte_ cqname[NS_MAXCDNAME];
+			byte_ crdata[NS_MAXCDNAME];
 			/* Length of the qname */
 			size_t qnamelength;
 
@@ -223,7 +223,7 @@ namespace Crafter {
 			DNSAnswer(const std::string& qname = "", const std::string& rdata = "");
 
 			/* Create the Query from raw data */
-			DNSAnswer(const byte* raw_data);
+			DNSAnswer(const byte_* raw_data);
 
 			/* Copy constructor */
 			DNSAnswer(const DNSAnswer& ans);
@@ -256,7 +256,7 @@ namespace Crafter {
 			size_t GetSize() const;
 
 			/* Write raw data on the pointer */
-			size_t Write(byte* data_ptr) const;
+			size_t Write(byte_* data_ptr) const;
 
 			/* Print the DNS Query */
 			void Print(std::ostream &out = std::cout) const;
@@ -271,23 +271,23 @@ namespace Crafter {
 		std::vector<DNSAnswer> Additional;
 
 		/* Operation Codes from bit 1 to 4 */
-		static const byte OpCodeQuery = 0x0;
-		static const byte OpCodeIQuery = 0x1;
-		static const byte OpCodeStatus = 0x2;
-		static const byte OpCodeNotify = 0x4;
-		static const byte OpCodeUpdate = 0x5;
+		static const byte_ OpCodeQuery = 0x0;
+		static const byte_ OpCodeIQuery = 0x1;
+		static const byte_ OpCodeStatus = 0x2;
+		static const byte_ OpCodeNotify = 0x4;
+		static const byte_ OpCodeUpdate = 0x5;
 
 		/* Return Code from bit 12 to 15 */
-		static const byte RCodeNoError = 0x0;
-		static const byte RCodeFormatError = 0x1;
-		static const byte RCodeServerFailure = 0x2;
-		static const byte RCodeNameError = 0x3;
-		static const byte RCodeRefused = 0x5;
-		static const byte RCodeYXDomain = 0x6;
-		static const byte RCodeYXRRSet = 0x7;
-		static const byte RCodeNXRRSet = 0x8;
-		static const byte RCodeNotAuth = 0x9;
-		static const byte RCodeNotZone = 0x10;
+		static const byte_ RCodeNoError = 0x0;
+		static const byte_ RCodeFormatError = 0x1;
+		static const byte_ RCodeServerFailure = 0x2;
+		static const byte_ RCodeNameError = 0x3;
+		static const byte_ RCodeRefused = 0x5;
+		static const byte_ RCodeYXDomain = 0x6;
+		static const byte_ RCodeYXRRSet = 0x7;
+		static const byte_ RCodeNXRRSet = 0x8;
+		static const byte_ RCodeNotAuth = 0x9;
+		static const byte_ RCodeNotZone = 0x10;
 
         void SetIdentification(const short_word& value) {
             SetFieldValue(FieldIdentification,value);

@@ -46,8 +46,8 @@ namespace Crafter {
 	/* ARP Context - All private Members*/
 	class ARPContext {
 		/* Type of spoofing */
-		static const byte Request = 0;
-		static const byte Reply = 1;
+		static const byte_ Request = 0;
+		static const byte_ Reply = 1;
 
 		/* Friend functions */
 		friend ARPContext* ARPSpoofingRequest(const std::string& net_target, const std::string& net_victim, const std::string& iface);
@@ -85,7 +85,7 @@ namespace Crafter {
 		PacketContainer* arp_packets;
 
 		/* Type of the spoofing (request or replies) */
-		byte type;
+		byte_ type;
 
 		/* Perform Sanity check */
 		void SanityCheck();

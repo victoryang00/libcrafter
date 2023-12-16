@@ -49,12 +49,12 @@ namespace Crafter {
 
 		void ParseLayerData(ParseInfo* info);
 
-        static const byte FieldPackeType = 0;
-        static const byte FieldAddressType = 1;
-        static const byte FieldAddressLength = 2;
-        static const byte FieldSourceAddress = 3;
-        static const byte FieldPad = 4;
-        static const byte FieldProtocol = 5;
+        static const byte_ FieldPackeType = 0;
+        static const byte_ FieldAddressType = 1;
+        static const byte_ FieldAddressLength = 2;
+        static const byte_ FieldSourceAddress = 3;
+        static const byte_ FieldPad = 4;
+        static const byte_ FieldProtocol = 5;
 
     public:
 
@@ -78,7 +78,7 @@ namespace Crafter {
             SetFieldValue(FieldSourceAddress,value);
         };
 
-        void SetPad(const std::vector<byte> & value) {
+        void SetPad(const std::vector<byte_> & value) {
             SetFieldValue(FieldPad,value);
         };
 
@@ -102,8 +102,8 @@ namespace Crafter {
             return GetFieldValue<std::string>(FieldSourceAddress);
         };
 
-        std::vector<byte>   GetPad() const {
-            return GetFieldValue<std::vector<byte> >(FieldPad);
+        std::vector<byte_>   GetPad() const {
+            return GetFieldValue<std::vector<byte_> >(FieldPad);
         };
 
         short_word  GetProtocol() const {

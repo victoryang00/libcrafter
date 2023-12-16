@@ -50,21 +50,21 @@ namespace Crafter {
 
         void ParseLayerData(ParseInfo* info);
 
-        static const byte FieldLength = 0;
-        static const byte FieldClassNum = 1;
-        static const byte FieldCType = 2;
+        static const byte_ FieldLength = 0;
+        static const byte_ FieldClassNum = 1;
+        static const byte_ FieldCType = 2;
 
     public:
 
 		enum { PROTO = 0xfe };
 
         /* Classes (ClassNum) */
-        static const byte MPLS;
+        static const byte_ MPLS;
 
         /* Types (CType) */
         /* +++ MPLS +++ */
-        static const byte MPLSReserved;
-        static const byte MPLSIncoming;
+        static const byte_ MPLSReserved;
+        static const byte_ MPLSIncoming;
 
         ICMPExtensionObject();
 
@@ -72,11 +72,11 @@ namespace Crafter {
             SetFieldValue(FieldLength,value);
         };
 
-        void SetClassNum(const byte& value) {
+        void SetClassNum(const byte_& value) {
             SetFieldValue(FieldClassNum,value);
         };
 
-        void SetCType(const byte& value) {
+        void SetCType(const byte_& value) {
             SetFieldValue(FieldCType,value);
         };
 
@@ -84,12 +84,12 @@ namespace Crafter {
             return GetFieldValue<short_word>(FieldLength);
         };
 
-        byte  GetClassNum() const {
-            return GetFieldValue<byte>(FieldClassNum);
+        byte_  GetClassNum() const {
+            return GetFieldValue<byte_>(FieldClassNum);
         };
 
-        byte  GetCType() const {
-            return GetFieldValue<byte>(FieldCType);
+        byte_  GetCType() const {
+            return GetFieldValue<byte_>(FieldCType);
         };
 
         std::string GetClassName() const;

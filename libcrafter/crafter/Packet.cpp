@@ -27,8 +27,6 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #include <sstream>
 
-#include "config.h"
-
 #include "Packet.h"
 #include "Crafter.h"
 #include "Utils/RawSocket.h"
@@ -46,7 +44,7 @@ static T fromString(const std::string& str) {
 	return t;
 }
 
-int Packet::ToWire(int raw, word current_id, byte *raw_data, size_t bytes_size) {
+int Packet::ToWire(int raw, word current_id, byte_ *raw_data, size_t bytes_size) {
 	gettimeofday(&this->ts, NULL);
 	return SocketSender::SendSocket(raw, current_id, raw_data, bytes_size);
 }
@@ -56,7 +54,7 @@ void Packet::HexDump(ostream& str) {
 		Craft();
 	size_t lSize = bytes_size;
 
-	byte *pAddressIn = new byte[lSize];
+	byte_ *pAddressIn = new byte_[lSize];
 
 	for (size_t i = 0 ; i < bytes_size  ; i++)
 		pAddressIn[i] = raw_data[i];
@@ -242,7 +240,7 @@ Packet::Packet(const Packet& copy_packet) : raw_data(0), bytes_size(0), pre_craf
 
 }
 
-Packet::Packet(const byte* data, size_t length, short_word proto_id) : raw_data(0), bytes_size(0), pre_crafted(0) {
+Packet::Packet(const byte_* data, size_t length, short_word proto_id) : raw_data(0), bytes_size(0), pre_crafted(0) {
 	ts.tv_sec = 0; ts.tv_usec = 0;
 	GetFromLayer(data,length,proto_id);
 }
@@ -376,7 +374,7 @@ void Packet::Craft() {
 		bytes_size = Stack[0]->GetRemainingSize();
 
 		/* Now, allocate bytes */
-		raw_data = new byte[bytes_size];
+		raw_data = new byte_[bytes_size];
 
 		Stack[0]->GetData(raw_data);
 	} else
@@ -385,7 +383,7 @@ void Packet::Craft() {
 
 }
 
-size_t Packet::GetData(byte* raw_ptr) {
+size_t Packet::GetData(byte_* raw_ptr) {
 	/* Craft the data */
 	if(!pre_crafted)
 		Craft();
@@ -395,7 +393,7 @@ size_t Packet::GetData(byte* raw_ptr) {
  		return 0;
 }
 
-const byte* Packet::GetRawPtr() {
+const byte_* Packet::GetRawPtr() {
 	/* Craft the data */
 	if(!pre_crafted)
 		Craft();
@@ -403,7 +401,7 @@ const byte* Packet::GetRawPtr() {
 	return raw_data;
 }
 
-const byte* Packet::GetBuffer() const {
+const byte_* Packet::GetBuffer() const {
 	return raw_data;
 }
 
@@ -758,7 +756,7 @@ void Packet::GetFilter(ostream& filter) const {
 					MATCH(2, 2, udp->GetDstPort());
 				}
 		   		break;
-			default: /* Match first byte of next header */
+			default: /* Match first byte_ of next header */
 				filter << MATCH(0, 1, (int)next_layer->raw_data[0]);
 				break;
 		}

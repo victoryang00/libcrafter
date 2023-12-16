@@ -40,7 +40,7 @@ RawLayer::RawLayer() {
 }
 
 /* Constructor from raw data */
-RawLayer::RawLayer(const byte* data, size_t size) {
+RawLayer::RawLayer(const byte_* data, size_t size) {
 	/* Name of the protocol */
 	SetName("RawLayer");
 	/* Set protocol Number */
@@ -75,7 +75,7 @@ RawLayer::RawLayer(const Layer& layer){
 	/* Get the size of the layer */
 	size_t layer_size = layer.GetSize();
 	/* Allocate memory */
-	byte* data = new byte[layer_size];
+	byte_* data = new byte_[layer_size];
 
 	/* Put data into the buffer */
 	layer.GetRawData(data);
@@ -97,7 +97,7 @@ RawLayer& RawLayer::operator=(const Layer& layer) throw () {
 	/* Get the size of the layer */
 	size_t layer_size = layer.GetSize();
 	/* Allocate memory */
-	byte* data = new byte[layer_size];
+	byte_* data = new byte_[layer_size];
 
 	/* Put data into the buffer */
 	layer.GetRawData(data);
@@ -116,7 +116,7 @@ const RawLayer RawLayer::operator+(const RawLayer& right) const{
 	size_t left_size = GetSize();
 
 	/* Allocate buffer */
-	byte* buffer = new byte[right_size + left_size];
+	byte_* buffer = new byte_[right_size + left_size];
 
 	/* Get data */
 	size_t copied = GetRawData(buffer);
@@ -152,14 +152,14 @@ void RawLayer::ParseLayerData(ParseInfo* info) {
 	extra_info = 0;
 }
 
-const byte* RawLayer::GetRawPointer() const
+const byte_* RawLayer::GetRawPointer() const
 {
 	return LayerPayload.GetRawPointer();
 }
 
-Pad::Pad(byte value, size_t times) {
-    byte* pad_data = new byte[times];
-    memset(pad_data,value,times*sizeof(byte));
+Pad::Pad(byte_ value, size_t times) {
+    byte_* pad_data = new byte_[times];
+    memset(pad_data,value,times*sizeof(byte_));
     SetPayload(pad_data,times);
     delete[] pad_data;
 }

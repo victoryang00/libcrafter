@@ -52,9 +52,9 @@ void DHCP::Craft() {
 		AddPayload((*it_opt)->GetData());
 	}
 
-	/* Put the end of options byte */
-	byte padd = 0xff;
-	AddPayload((const byte*)&padd,sizeof(byte));
+	/* Put the end of options byte_ */
+	byte_ padd = 0xff;
+	AddPayload((const byte_*)&padd, sizeof(byte_));
 }
 
 /*
@@ -66,7 +66,7 @@ void DHCP::FromRaw(const RawLayer& raw_layer) {
 	size_t data_size = raw_layer.GetSize();
 
 	/* Copy all the data */
-	byte* dhcp_data = new byte[data_size];
+	byte_* dhcp_data = new byte_[data_size];
 	raw_layer.GetData(dhcp_data);
 
 	/* Create the header */
@@ -82,7 +82,7 @@ void DHCP::FromRaw(const RawLayer& raw_layer) {
 		delete (*it_opt);
 	Options.clear();
 
-	byte* data = dhcp_data + magicookie_shift + 4;
+	byte_* data = dhcp_data + magicookie_shift + 4;
 
 	size_t j = 0 ;
 
@@ -181,7 +181,7 @@ void DHCP::FromRaw(const RawLayer& raw_layer) {
 		case 46:    // NetBIOS over TCP/IP node type
 		case 52:    // Option overload
 		case 53:    // DHCP message type
-			Options.push_back(CreateDHCPOption(data[j], *((byte *)(data + j + 2)), DHCPOptions::BYTE));
+			Options.push_back(CreateDHCPOption(data[j], *((byte_ *)(data + j + 2)), DHCPOptions::BYTE));
 			break;
 
 		case  2:    // Time offset
@@ -222,7 +222,7 @@ void DHCP::PrintPayload(ostream& str) const {
 }
 
 void DHCP::ParseLayerData(ParseInfo* info) {
-	const byte* data = info->raw_data + info->offset;
+	const byte_* data = info->raw_data + info->offset;
 
 	size_t j = 0 ;
 
@@ -321,7 +321,7 @@ void DHCP::ParseLayerData(ParseInfo* info) {
 		case 46:    // NetBIOS over TCP/IP node type
 		case 52:    // Option overload
 		case 53:    // DHCP message type
-			Options.push_back(CreateDHCPOption(data[j], *((byte *)(data + j + 2)), DHCPOptions::BYTE));
+			Options.push_back(CreateDHCPOption(data[j], *((byte_ *)(data + j + 2)), DHCPOptions::BYTE));
 			break;
 
 		case  2:    // Time offset

@@ -50,15 +50,15 @@ namespace Crafter {
 
 		IPAddress(const std::string& name, size_t nword, size_t nbyte);
 
-		void Write(byte* raw_data) const;
+		void Write(byte_* raw_data) const;
 
-		void Read(const byte* raw_data);
+		void Read(const byte_* raw_data);
 
 		FieldInfo* Clone() const;
 
 		void SetField(const std::string& ip_address);
 
-        operator byte*() { return (byte*)&address.s_addr; }
+        operator byte_*() { return (byte_*)&address.s_addr; }
 
 		virtual ~IPAddress();
 

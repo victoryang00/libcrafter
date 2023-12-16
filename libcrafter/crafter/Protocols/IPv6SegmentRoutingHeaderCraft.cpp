@@ -55,7 +55,7 @@ size_t IPv6SegmentRoutingHeader::GetRoutingPayloadSize() const {
     return s;
 }
 
-void IPv6SegmentRoutingHeader::FillRoutingPayload(byte *payload) const {
+void IPv6SegmentRoutingHeader::FillRoutingPayload(byte_ *payload) const {
     /* Put all segments at the start */
     vector<segment_t>::const_iterator it;
     for (it = Segments.begin(); it != Segments.end(); ++it, payload += segment_t::GetSize())
@@ -105,7 +105,7 @@ void IPv6SegmentRoutingHeader::Craft() {
 }
 
 void IPv6SegmentRoutingHeader::ParsePolicy(
-        const size_t &policy_index, byte const **segment_end) {
+        const size_t &policy_index, byte_ const **segment_end) {
     /* Check if that policy is set*/
     if (PolicyIsSet(GetPolicyFlag(policy_index))) {
         /* Update the pointer towards the end of the segment section */
@@ -124,7 +124,7 @@ int IPv6SegmentRoutingHeader::PushIPv6Segment(const string& ip) {
     return 0;
 }
 
-void IPv6SegmentRoutingHeader::CopySegment(const byte *segment_start) {
+void IPv6SegmentRoutingHeader::CopySegment(const byte_ *segment_start) {
     /* Allocate a buffer to store the IPv6 address */
     segment_t segment;
     /* Copy it */
@@ -136,8 +136,8 @@ void IPv6SegmentRoutingHeader::CopySegment(const byte *segment_start) {
 void IPv6SegmentRoutingHeader::ParseLayerData(ParseInfo* info) {
     /* SRH is structured as FixedHeader/Segments/PolicyList/HMAC ,
      * where the last two part are optional */
-    const byte *segment_start = info->raw_data + info->offset;
-    const byte *segment_end = segment_start + GetHeaderExtLen() * 8;
+    const byte_ *segment_start = info->raw_data + info->offset;
+    const byte_ *segment_end = segment_start + GetHeaderExtLen() * 8;
 
     /* Check presence of the HMAC field at the end*/
     if (GetHMACKeyID()) {
@@ -192,7 +192,7 @@ void IPv6SegmentRoutingHeader::PrintPayload(ostream& str) const {
         str << "HMAC = " << HMAC;
 }
 
-int IPv6SegmentRoutingHeader::SetHMMAC(const byte &keyid, const hmac_t &hmac) {
+int IPv6SegmentRoutingHeader::SetHMMAC(const byte_ &keyid, const hmac_t &hmac) {
     if (! keyid) {
         PrintMessage(Crafter::PrintCodes::PrintWarning,
                 "IPv6SegmentRoutingHeader::SetHMAC()",

@@ -42,10 +42,10 @@ namespace Crafter {
 
 	protected:
 		/* Readable payload */
-		byte IsReadable;
+		byte_ IsReadable;
 
 		/* Container of data */
-		std::vector<byte> storage;
+		std::vector<byte_> storage;
 
 		/* Clear the Payload */
 		void clear () { storage.clear(); };
@@ -63,7 +63,7 @@ namespace Crafter {
 		/* Copy constructor */
 		Payload(const Payload& payload) : IsReadable(payload.IsReadable), storage(payload.storage) { };
 
-		Payload(const std::vector<byte>& raw_data) : IsReadable(1) {
+		Payload(const std::vector<byte_>& raw_data) : IsReadable(1) {
 			storage.reserve(reserved);
 			SetPayload(&raw_data[0],raw_data.size());
 		};
@@ -81,18 +81,18 @@ namespace Crafter {
 		/* Set payload */
 		void SetPayload (const char *data);
 		void SetPayload (const Payload& payload);
-		void SetPayload (const byte *data, size_t ndata);
+		void SetPayload (const byte_ *data, size_t ndata);
 
 		/* Add more stuff to the payload */
 		void AddPayload (const char* data);
 		void AddPayload (const Payload& payload);
-		void AddPayload (const byte* data, size_t ndata);
+		void AddPayload (const byte_* data, size_t ndata);
 
 		/* Copy the data into the pointer and returns the number of bytes copied */
-		size_t GetPayload(byte* dst) const;
+		size_t GetPayload(byte_* dst) const;
 
 		/* Copy the data into the pointer (no more than ndata) and returns the number of bytes copied */
-		size_t GetPayload(byte* dst, size_t ndata) const;
+		size_t GetPayload(byte_* dst, size_t ndata) const;
 
 		/* Get payload as a STL string */
 		std::string GetString() const;
@@ -110,10 +110,10 @@ namespace Crafter {
 		virtual void Print(std::ostream& str = std::cout) const;
 
 		/* Return a constant reference to the container */
-		const std::vector<byte>& GetContainer() const { return storage; };
+		const std::vector<byte_>& GetContainer() const { return storage; };
 
 		/* Get raw pointer */
-		const byte* GetRawPointer() const { return (const byte*)&storage[0]; };
+		const byte_* GetRawPointer() const { return (const byte_*)&storage[0]; };
 
 		virtual ~Payload() { /* */ };
 	};

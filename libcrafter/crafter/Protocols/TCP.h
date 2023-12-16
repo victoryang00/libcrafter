@@ -49,40 +49,40 @@ namespace Crafter {
 
         void ParseLayerData(ParseInfo* info);
 
-        static const byte FieldSrcPort = 0;
-        static const byte FieldDstPort = 1;
-        static const byte FieldSeqNumber = 2;
-        static const byte FieldAckNumber = 3;
-        static const byte FieldDataOffset = 4;
-        static const byte FieldReserved = 5;
-        static const byte FieldFlags = 6;
-        static const byte FieldWindowsSize = 7;
-        static const byte FieldCheckSum = 8;
-        static const byte FieldUrgPointer = 9;
+        static const byte_ FieldSrcPort = 0;
+        static const byte_ FieldDstPort = 1;
+        static const byte_ FieldSeqNumber = 2;
+        static const byte_ FieldAckNumber = 3;
+        static const byte_ FieldDataOffset = 4;
+        static const byte_ FieldReserved = 5;
+        static const byte_ FieldFlags = 6;
+        static const byte_ FieldWindowsSize = 7;
+        static const byte_ FieldCheckSum = 8;
+        static const byte_ FieldUrgPointer = 9;
 
     public:
 
 		enum { PROTO = 0x06 };
 
 		/* Flags */
-		static const byte FIN;
-		static const byte SYN;
-		static const byte RST;
-		static const byte PSH;
-		static const byte ACK;
-		static const byte URG;
-		static const byte ECE;
-		static const byte CWR;
+		static const byte_ FIN;
+		static const byte_ SYN;
+		static const byte_ RST;
+		static const byte_ PSH;
+		static const byte_ ACK;
+		static const byte_ URG;
+		static const byte_ ECE;
+		static const byte_ CWR;
 
 		/* Flag Checkers */
-		byte GetFIN() { return (GetFlags() & TCP::FIN); };
-		byte GetSYN() { return (GetFlags() & TCP::SYN); };
-		byte GetRST() { return (GetFlags() & TCP::RST); };
-		byte GetPSH() { return (GetFlags() & TCP::PSH); };
-		byte GetACK() { return (GetFlags() & TCP::ACK); };
-		byte GetURG() { return (GetFlags() & TCP::URG); };
-		byte GetECE() { return (GetFlags() & TCP::ECE); };
-		byte GetCWR() { return (GetFlags() & TCP::CWR); };
+		byte_ GetFIN() { return (GetFlags() & TCP::FIN); };
+		byte_ GetSYN() { return (GetFlags() & TCP::SYN); };
+		byte_ GetRST() { return (GetFlags() & TCP::RST); };
+		byte_ GetPSH() { return (GetFlags() & TCP::PSH); };
+		byte_ GetACK() { return (GetFlags() & TCP::ACK); };
+		byte_ GetURG() { return (GetFlags() & TCP::URG); };
+		byte_ GetECE() { return (GetFlags() & TCP::ECE); };
+		byte_ GetCWR() { return (GetFlags() & TCP::CWR); };
 
         TCP();
 
@@ -110,7 +110,7 @@ namespace Crafter {
             SetFieldValue(FieldReserved,value);
         };
 
-        void SetFlags(const byte& value) {
+        void SetFlags(const byte_& value) {
             SetFieldValue(FieldFlags,value);
         };
 
@@ -150,8 +150,8 @@ namespace Crafter {
             return GetFieldValue<word>(FieldReserved);
         };
 
-        byte  GetFlags() const {
-            return GetFieldValue<byte>(FieldFlags);
+        byte_  GetFlags() const {
+            return GetFieldValue<byte_>(FieldFlags);
         };
 
         short_word  GetWindowsSize() const {

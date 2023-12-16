@@ -50,10 +50,10 @@ namespace Crafter {
 
         void ParseLayerData(ParseInfo* info);
 
-        static const byte FieldLabel = 0;
-        static const byte FieldExperimental = 1;
-        static const byte FieldBottomOfStack = 2;
-        static const byte FieldTTL = 3;
+        static const byte_ FieldLabel = 0;
+        static const byte_ FieldExperimental = 1;
+        static const byte_ FieldBottomOfStack = 2;
+        static const byte_ FieldTTL = 3;
 
     public:
 
@@ -73,7 +73,7 @@ namespace Crafter {
             SetFieldValue(FieldBottomOfStack,value);
         };
 
-        void SetTTL(const byte& value) {
+        void SetTTL(const byte_& value) {
             SetFieldValue(FieldTTL,value);
         };
 
@@ -89,8 +89,8 @@ namespace Crafter {
             return GetFieldValue<word>(FieldBottomOfStack);
         };
 
-        byte  GetTTL() const {
-            return GetFieldValue<byte>(FieldTTL);
+        byte_  GetTTL() const {
+            return GetFieldValue<byte_>(FieldTTL);
         };
 
         ~ICMPExtensionMPLS() { /* Destructor */ };

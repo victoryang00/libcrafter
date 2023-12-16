@@ -52,7 +52,7 @@ namespace Crafter {
 		/* A tag for know with what kind of option we are dealing */
 		std::string tag;
 		/* Fake size in case we want to create a malformed DHCP option */
-		byte fake_size;
+		byte_ fake_size;
 
 		/* Function that set the payload */
 		virtual void SetPayload() = 0;
@@ -189,9 +189,9 @@ namespace Crafter {
 		static const word DHCPINFORM = 8;
 
 		/* Type TAGS */
-		static const byte BYTE = 0;
-		static const byte SHORT = 1;
-		static const byte WORD = 2;
+		static const byte_ BYTE = 0;
+		static const byte_ SHORT = 1;
+		static const byte_ WORD = 2;
 
 		/* Print the options */
 		void Print() const;
@@ -208,7 +208,7 @@ namespace Crafter {
 		}
 
 		/* Get the code associated to this option */
-		byte GetCode() const { return code; };
+		byte_ GetCode() const { return code; };
 
 		/* Return a payload with all the data */
 		Payload GetData() const;
@@ -222,7 +222,7 @@ namespace Crafter {
 		virtual std::vector<std::string> GetIPAddresses() const;
 
 		/* Get a raw pointer to the data */
-		byte* GetRawPointer() const;
+		byte_* GetRawPointer() const;
 
 		/* Get number value of the data */
 		virtual word GetNumber() const;
@@ -234,10 +234,10 @@ namespace Crafter {
 		void SetIPAdresses(const std::vector<std::string>& ips);
 
 		/* Set Payload from a raw pointer */
-		void SetRawPointer(const byte* raw_data, size_t length);
+		void SetRawPointer(const byte_* raw_data, size_t length);
 
 		/* Set a number as DHCP data */
-		void SetNumber(word value, byte type);
+		void SetNumber(word value, byte_ type);
 
 		/* Set option size */
 		void SetOptionSize(size_t sz);
@@ -311,7 +311,7 @@ namespace Crafter {
 		DHCPOptions* Clone() const { return new DHCPOptionsGeneric(code,gen_data.GetContainer()); };
 
 	public:
-		DHCPOptionsGeneric(short_word code, const std::vector<byte>& data);
+		DHCPOptionsGeneric(short_word code, const std::vector<byte_>& data);
 
 		virtual ~DHCPOptionsGeneric();
 	};
@@ -320,7 +320,7 @@ namespace Crafter {
 
 	class DHCPOptionsMessageType : public DHCPOptions {
 		/* String */
-		byte type;
+		byte_ type;
 
 		/* Print data */
 		void PrintData() const;
@@ -336,7 +336,7 @@ namespace Crafter {
 		DHCPOptions* Clone() const { return new DHCPOptionsMessageType(code,type); };
 
 	public:
-		DHCPOptionsMessageType(short_word code, byte type);
+		DHCPOptionsMessageType(short_word code, byte_ type);
 
 		virtual ~DHCPOptionsMessageType();
 	};
@@ -359,7 +359,7 @@ namespace Crafter {
 		DHCPOptions* Clone() const { return new DHCPOptionsParameterList(code,par_data.GetContainer()); };
 
 	public:
-		DHCPOptionsParameterList(short_word code, const std::vector<byte>& data);
+		DHCPOptionsParameterList(short_word code, const std::vector<byte_>& data);
 
 		virtual ~DHCPOptionsParameterList();
 	};
@@ -406,15 +406,15 @@ Crafter::DHCPOptionsNumber<T>::DHCPOptionsNumber(short_word code, T value) : DHC
 template<class T>
 void Crafter::DHCPOptionsNumber<T>::SetPayload() {
 	word net_value = 0;
-	if (sizeof(T) == sizeof(byte)) {
+	if (sizeof(T) == sizeof(byte_)) {
 		net_value = value;
-		data.SetPayload((const byte*)&net_value,sizeof(byte));
+		data.SetPayload((const byte_*)&net_value, sizeof(byte_));
 	}else if (sizeof(T) == sizeof(short_word)) {
 		net_value = htons((short_word)value);
-		data.SetPayload((const byte*)&net_value,sizeof(short_word));
+		data.SetPayload((const byte_*)&net_value, sizeof(short_word));
 	}else if (sizeof(T) == sizeof(word)) {
 		net_value = htonl((word)value);
-		data.SetPayload((const byte*)&net_value,sizeof(word));
+		data.SetPayload((const byte_*)&net_value, sizeof(word));
 	}
 }
 
@@ -422,10 +422,10 @@ template<class T>
 void Crafter::DHCPOptionsNumber<T>::SetFields() {
 
 	if(data.GetSize() >= sizeof(T)) {
-		byte* raw_data = new byte[data.GetSize()];
+		byte_* raw_data = new byte_[data.GetSize()];
 		data.GetPayload(raw_data);
 
-		if(sizeof(T) == sizeof(byte))
+		if(sizeof(T) == sizeof(byte_))
 			value = *((T *)(raw_data));
 		else if(sizeof(T) == sizeof(short_word))
 			value = ntohs(*((T *)(raw_data)));
@@ -457,10 +457,10 @@ namespace Crafter {
 	/* This can get the DHCP options data from a string (IP address) */
 	DHCPOptions* CreateDHCPOption(short_word code, const std::vector<std::string>& ip_addresses);
 
-	/* This get the value of the DHCP options data from a word, short or a byte */
-	DHCPOptions* CreateDHCPOption(short_word code, word value, byte type_tag);
+	/* This get the value of the DHCP options data from a word, short or a byte_ */
+	DHCPOptions* CreateDHCPOption(short_word code, word value, byte_ type_tag);
 
 	/* This put raw_data into the DHCP options data. Ultimately, this is the function to use */
-	DHCPOptions* CreateDHCPOption(short_word code, const byte* raw_data, size_t length);
+	DHCPOptions* CreateDHCPOption(short_word code, const byte_* raw_data, size_t length);
 }
 #endif /* DHCPOPTIONS_H_ */

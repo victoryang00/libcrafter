@@ -47,10 +47,10 @@ namespace Crafter {
 
         void ReDefineActiveFields();
 
-        static const byte FieldKind = 0;
-        static const byte FieldLength = 1;
-        static const byte FieldValue = 2;
-        static const byte FieldEchoReply = 3;
+        static const byte_ FieldKind = 0;
+        static const byte_ FieldLength = 1;
+        static const byte_ FieldValue = 2;
+        static const byte_ FieldEchoReply = 3;
 
     public:
 
@@ -58,11 +58,11 @@ namespace Crafter {
 
         TCPOptionTimestamp();
 
-        void SetKind(const byte& value) {
+        void SetKind(const byte_& value) {
             SetFieldValue(FieldKind,value);
         };
 
-        void SetLength(const byte& value) {
+        void SetLength(const byte_& value) {
             SetFieldValue(FieldLength,value);
         };
 
@@ -74,12 +74,12 @@ namespace Crafter {
             SetFieldValue(FieldEchoReply,value);
         };
 
-        byte  GetKind() const {
-            return GetFieldValue<byte>(FieldKind);
+        byte_  GetKind() const {
+            return GetFieldValue<byte_>(FieldKind);
         };
 
-        byte  GetLength() const {
-            return GetFieldValue<byte>(FieldLength);
+        byte_  GetLength() const {
+            return GetFieldValue<byte_>(FieldLength);
         };
 
         word  GetValue() const {

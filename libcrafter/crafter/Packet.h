@@ -46,12 +46,12 @@ namespace Crafter {
 		/* Stack of layers */
 		std::vector<Layer*> Stack;
 		/* Raw data of the packet in form of a payload */
-		byte* raw_data;
+		byte_* raw_data;
 		/* Size in bytes of the packet */
 		size_t bytes_size;
 
 		/* Pre-Crafted flag. This flag is set when an user wnats to handle the crafting by himself */
-		byte pre_crafted;
+		byte_ pre_crafted;
 
 		/* Packet time stamp */
 		timeval ts;
@@ -64,13 +64,13 @@ namespace Crafter {
 		static void DestroyMutex();
 
 		/* Construct the packet from a layer to the top */
-		void GetFromLayer(const byte* data, size_t length, short_word proto_id);
+		void GetFromLayer(const byte_* data, size_t length, short_word proto_id);
 
 		/* Craft data from the layer pushed into the stack */
 		void Craft();
 
 		/* Send the packet over the wire */
-		int ToWire(int raw, word current_id, byte *raw_data, size_t bytes_size);
+		int ToWire(int raw, word current_id, byte_ *raw_data, size_t bytes_size);
 
 	public:
 		/* Initialize and clean */
@@ -83,7 +83,7 @@ namespace Crafter {
 		/* Constructor */
 		Packet() : raw_data(0), bytes_size(0), pre_crafted(0) { ts.tv_sec = 0; ts.tv_usec = 0; };
 		Packet(timeval  ts) : raw_data(0), bytes_size(0), pre_crafted(0), ts(ts) { /* */ };
-		Packet(const byte* data, size_t length, short_word proto_id);
+		Packet(const byte_* data, size_t length, short_word proto_id);
 		Packet(const RawLayer& data, short_word proto_id);
 
 		/* Copy Constructor */
@@ -103,27 +103,27 @@ namespace Crafter {
 		Packet& operator/=(const Packet& right);
 
 		/* Construct a packet from raw data using the layer <proto_id> as a starting point */
-		void Decode(const byte* data, size_t length, short_word proto_id);
+		void Decode(const byte_* data, size_t length, short_word proto_id);
 		void Decode(const RawLayer& data, short_word proto_id);
 
 		/* Construct packet from data - SIMPLE WRAPPERS FOR BACKWARD COMPATIBILITY*/
-		void PacketFromIP(const byte* data, size_t length);
-		void PacketFromIPv6(const byte* data, size_t length);
-		void PacketFromEthernet(const byte* data, size_t length);
+		void PacketFromIP(const byte_* data, size_t length);
+		void PacketFromIPv6(const byte_* data, size_t length);
+		void PacketFromEthernet(const byte_* data, size_t length);
 		/* Packet from link layer (link_proto in the datalink type defined by libpcap) */
-		void PacketFromLinkLayer(const byte* data, size_t length, int link_proto);
+		void PacketFromLinkLayer(const byte_* data, size_t length, int link_proto);
 		/* Construct packet a raw layer */
 		void PacketFromIP(const RawLayer& data);
 		void PacketFromIPv6(const RawLayer& data);
 		void PacketFromEthernet(const RawLayer& data);
 
 		/* Put raw data on array and returns the number of bytes copied */
-		size_t GetData(byte* raw_ptr);
+		size_t GetData(byte_* raw_ptr);
 		/* Get a pointer to the raw buffer inside the packet (which holds the crafted data)
 		 * This will cause Craft() to be called if the packet has not yet been crafted! */
-		const byte* GetRawPtr();
+		const byte_* GetRawPtr();
 		/* Get a pointer to the raw buffer inside the packet (this is a const method, without crafting the data) */
-		const byte* GetBuffer() const;
+		const byte_* GetBuffer() const;
 
 		/* Get time stamp */
 		timeval GetTimestamp() const;

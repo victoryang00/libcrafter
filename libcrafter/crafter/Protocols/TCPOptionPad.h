@@ -47,7 +47,7 @@ namespace Crafter {
 
         void ReDefineActiveFields();
 
-        static const byte FieldKind = 0;
+        static const byte_ FieldKind = 0;
 
     public:
 
@@ -55,17 +55,17 @@ namespace Crafter {
 
         TCPOptionPad();
 
-        void SetKind(const byte& value) {
+        void SetKind(const byte_& value) {
             SetFieldValue(FieldKind,value);
         };
 
-        void SetLength(const byte& value) {  /*  */ };
+        void SetLength(const byte_& value) {  /*  */ };
 
-        byte  GetKind() const {
-            return GetFieldValue<byte>(FieldKind);
+        byte_  GetKind() const {
+            return GetFieldValue<byte_>(FieldKind);
         };
 
-        byte  GetLength() const {
+        byte_  GetLength() const {
             return 1;
         };
 

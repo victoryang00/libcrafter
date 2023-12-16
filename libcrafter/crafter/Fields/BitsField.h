@@ -45,19 +45,19 @@ namespace Crafter {
 
 		const size_t nword;
 		const size_t offset;
-		const byte over_bytes;
-		const byte rightMargin;
-		const byte maskLow;
-		const byte maskHigh;
+		const byte_ over_bytes;
+		const byte_ rightMargin;
+		const byte_ maskLow;
+		const byte_ maskHigh;
 
 		void PrintValue(std::ostream& str) const;
 
 	public:
 		BitsField(const std::string& name, size_t nword);
 
-		void Write(byte* raw_data) const;
+		void Write(byte_* raw_data) const;
 
-		void Read(const byte* raw_data);
+		void Read(const byte_* raw_data);
 
 		FieldInfo* Clone() const;
 
@@ -106,13 +106,13 @@ Crafter::BitsField<size,nbit>::BitsField(const std::string& name, size_t nword) 
 }
 
 template<size_t size, size_t nbit>
-void Crafter::BitsField<size,nbit>::Write(byte* raw_data) const {
-	byte* data_ptr = raw_data + offset;
+void Crafter::BitsField<size,nbit>::Write(byte_* raw_data) const {
+	byte_* data_ptr = raw_data + offset;
     /* Write values [x,y] in bit sequence B0..x.y..Bn
      * and x,y are in a word made of bytes Bx..By */
     /* Shift by the right margin to have Bx..By.. aligned on y */
     word value = htonl(human << rightMargin);
-	const byte* field_data = (const byte*)(&value);
+	const byte_* field_data = (const byte_*)(&value);
 	if (over_bytes) {
         /* Reset the previous bits of x (in case of multiple set) */
         data_ptr[0] &= ~maskLow;
@@ -126,7 +126,7 @@ void Crafter::BitsField<size,nbit>::Write(byte* raw_data) const {
         /* Apply y */
         data_ptr[over_bytes] |= field_data[3];
     } else {
-		/* We span on a single byte, apply both masks at once */
+		/* We span on a single byte_, apply both masks at once */
 		/* Reset the bits of the bitfield */
         data_ptr[0] &= (~maskLow | ~maskHigh);
 		/* Copy its content */
@@ -134,14 +134,14 @@ void Crafter::BitsField<size,nbit>::Write(byte* raw_data) const {
 	}
 }
 template<size_t size, size_t nbit>
-void Crafter::BitsField<size,nbit>::Read(const byte* raw_data) {
-	const byte* data_ptr = raw_data + offset;
+void Crafter::BitsField<size,nbit>::Read(const byte_* raw_data) {
+	const byte_* data_ptr = raw_data + offset;
     word value = 0;
-    byte* field_data = (byte*)(&value);
+    byte_* field_data = (byte_*)(&value);
     /* Read values [x,y] in bit sequence B0..x.y..Bn,
 	 * and x,y must be stored in a word made of bytes By..Bx */
     field_data[3 - over_bytes] = data_ptr[0];
-    /* Keep only the low order bits of the first byte */
+    /* Keep only the low order bits of the first byte_ */
     field_data[3 - over_bytes] &= maskLow;
 	/* Copy all remaining bytes */
 	for(int i = 1 ; i <= over_bytes ; i++)

@@ -30,7 +30,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 using namespace Crafter;
 using namespace std;
 
-static IPOptionPad SetOptionValue(byte value) {
+static IPOptionPad SetOptionValue(byte_ value) {
 	IPOptionPad pad;
 	pad.SetOption(value);
 	return pad;

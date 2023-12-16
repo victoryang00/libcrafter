@@ -183,9 +183,9 @@ int ipv4_parse_octet (ipv4_parse_ctx *ctx, int idx, char *octet)
  *
  * char *range = "10.1.1.1";
  *
- * would result in the 10th byte of the 1st array
+ * would result in the 10th byte_ of the 1st array
  * being set to the value of one, whie the 1st
- * byte of the 2nd, 3rd and 4th arrays being set to
+ * byte_ of the 2nd, 3rd and 4th arrays being set to
  * one.
  *
  * Once the range has been completely parsed and

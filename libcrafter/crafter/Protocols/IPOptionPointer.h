@@ -43,11 +43,11 @@ namespace Crafter {
 
         void ParseLayerData(ParseInfo* info);
 
-        static const byte FieldCopyFlag = 0;
-        static const byte FieldClass = 1;
-        static const byte FieldOption = 2;
-        static const byte FieldLength = 3;
-        static const byte FieldPointer = 4;
+        static const byte_ FieldCopyFlag = 0;
+        static const byte_ FieldClass = 1;
+        static const byte_ FieldOption = 2;
+        static const byte_ FieldLength = 3;
+        static const byte_ FieldPointer = 4;
 
     public:
 
@@ -65,11 +65,11 @@ namespace Crafter {
             SetFieldValue(FieldOption,value);
         };
 
-        void SetLength(const byte& value) {
+        void SetLength(const byte_& value) {
             SetFieldValue(FieldLength,value);
         };
 
-        void SetPointer(const byte& value) {
+        void SetPointer(const byte_& value) {
             SetFieldValue(FieldPointer,value);
         };
 
@@ -85,12 +85,12 @@ namespace Crafter {
             return GetFieldValue<word>(FieldOption);
         };
 
-        byte  GetLength() const {
-            return GetFieldValue<byte>(FieldLength);
+        byte_  GetLength() const {
+            return GetFieldValue<byte_>(FieldLength);
         };
 
-        byte  GetPointer() const {
-            return GetFieldValue<byte>(FieldPointer);
+        byte_  GetPointer() const {
+            return GetFieldValue<byte_>(FieldPointer);
         };
 
         virtual ~IPOptionPointer() { /* Destructor */ };

@@ -52,8 +52,8 @@ namespace Crafter {
 
         virtual void ParseLayerData(ParseInfo* info);
 
-        static const byte FieldKind = 0;
-        static const byte FieldLength = 1;
+        static const byte_ FieldKind = 0;
+        static const byte_ FieldLength = 1;
 
     public:
 
@@ -65,20 +65,20 @@ namespace Crafter {
 
         TCPOption();
 
-        void SetKind(const byte& value) {
+        void SetKind(const byte_& value) {
             SetFieldValue(FieldKind,value);
         };
 
-        virtual void SetLength(const byte& value) {
+        virtual void SetLength(const byte_& value) {
             SetFieldValue(FieldLength,value);
         };
 
-        byte  GetKind() const {
-            return GetFieldValue<byte>(FieldKind);
+        byte_  GetKind() const {
+            return GetFieldValue<byte_>(FieldKind);
         };
 
-        byte  GetLength() const {
-            return GetFieldValue<byte>(FieldLength);
+        byte_  GetLength() const {
+            return GetFieldValue<byte_>(FieldLength);
         };
 
         ~TCPOption() { /* Destructor */ };
@@ -164,11 +164,11 @@ namespace Crafter {
 			return GetPayloadSize();
 		}
 
-		void GetCookie(byte *dst) const {
+		void GetCookie(byte_ *dst) const {
 			GetPayload(dst);
 		}
 
-		void setCookie(const byte *data, unsigned int ndata) {
+		void setCookie(const byte_ *data, unsigned int ndata) {
 			SetPayload(data, ndata);
 		}
 
@@ -194,8 +194,8 @@ namespace Crafter {
 
         void ParseLayerData(ParseInfo* info);
 
-        static const byte FieldKind = 0;
-        static const byte FieldLength = 1;
+        static const byte_ FieldKind = 0;
+        static const byte_ FieldLength = 1;
 
 		short_word header_length;
 		short_word segment_length;
@@ -209,11 +209,11 @@ namespace Crafter {
         enum { PROTO = 0x900a };
 
 		/* The different size in bytes for the EDO variant */
-		static const byte EDOREQUEST;
-		static const byte EDO;
-		static const byte EDOEXT;
+		static const byte_ EDOREQUEST;
+		static const byte_ EDO;
+		static const byte_ EDOEXT;
 
-        TCPOptionEDO(byte length = TCPOptionEDO::EDOREQUEST);
+        TCPOptionEDO(byte_ length = TCPOptionEDO::EDOREQUEST);
 
 		TCPOptionEDO(const TCPOptionEDO& edo) :
 			header_length(edo.header_length),
@@ -235,7 +235,7 @@ namespace Crafter {
                     dynamic_cast<const TCPOptionEDO&>(right));
 		}
 
-        void SetLength(const byte& value) {
+        void SetLength(const byte_& value) {
 			if (value == TCPOptionEDO::EDOREQUEST
 					|| value == TCPOptionEDO::EDO
 					|| value == TCPOptionEDO::EDOEXT) {

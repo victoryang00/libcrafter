@@ -33,14 +33,14 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 using namespace Crafter;
 using namespace std;
 
-const byte TCP::FIN = 1 << 0;
-const byte TCP::SYN = 1 << 1;
-const byte TCP::RST = 1 << 2;
-const byte TCP::PSH = 1 << 3;
-const byte TCP::ACK = 1 << 4;
-const byte TCP::URG = 1 << 5;
-const byte TCP::ECE = 1 << 6;
-const byte TCP::CWR = 1 << 7;
+const byte_ TCP::FIN = 1 << 0;
+const byte_ TCP::SYN = 1 << 1;
+const byte_ TCP::RST = 1 << 2;
+const byte_ TCP::PSH = 1 << 3;
+const byte_ TCP::ACK = 1 << 4;
+const byte_ TCP::URG = 1 << 5;
+const byte_ TCP::ECE = 1 << 6;
+const byte_ TCP::CWR = 1 << 7;
 
 size_t TCP::ComputeOptionSize() const {
     Layer* top_layer = GetTopLayer();
@@ -97,7 +97,7 @@ void TCP::Craft() {
 
 			if(data_length%2 != 0) data_length++;
 
-			vector<byte> raw_buffer(data_length,0);
+			vector<byte_> raw_buffer(data_length, 0);
 
 			inet_pton(AF_INET, ip_layer->GetSourceIP().c_str(), &raw_buffer[0]);
 			inet_pton(AF_INET, ip_layer->GetDestinationIP().c_str(), &raw_buffer[4]);
@@ -120,7 +120,7 @@ void TCP::Craft() {
 
 			if(data_length%2 != 0) data_length++;
 
-			vector<byte> raw_buffer(data_length,0);
+			vector<byte_> raw_buffer(data_length, 0);
 
 			inet_pton(AF_INET6, ip_layer->GetSourceIP().c_str(), &raw_buffer[0]);
 			inet_pton(AF_INET6, ip_layer->GetDestinationIP().c_str(), &raw_buffer[16]);

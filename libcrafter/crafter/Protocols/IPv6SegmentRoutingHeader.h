@@ -65,26 +65,26 @@ namespace Crafter {
             ByteArray& Clone(const ByteArray &other) { Read(other.bytes); return *this; }
 
             protected:
-                byte bytes[n];
+                byte_ bytes[n];
 
             public:
                 ByteArray() { memset(bytes, 0, n); }
                 ~ByteArray() {}
                 /* copy */
                 ByteArray(const ByteArray &other) { Clone(other); }
-                ByteArray(const byte *array) { Read(array); }
+                ByteArray(const byte_ *array) { Read(array); }
                 /* set */
                 ByteArray& operator=(const ByteArray &other) { return Clone(other); }
-                ByteArray& operator=(const byte *other) { return Read(other); }
-                byte operator[](int i) const { return bytes[i]; }
-                byte& operator[](int i) { return bytes[i]; }
+                ByteArray& operator=(const byte_ *other) { return Read(other); }
+                byte_ operator[](int i) const { return bytes[i]; }
+                byte_& operator[](int i) { return bytes[i]; }
 
-                void Write(byte *dst) const { memcpy(dst, bytes, n); }
-                void Read(const byte *src) { memcpy(bytes, src, n); }
-                byte* Raw() const { return bytes; }
+                void Write(byte_ *dst) const { memcpy(dst, bytes, n); }
+                void Read(const byte_ *src) { memcpy(bytes, src, n); }
+                byte_* Raw() const { return bytes; }
 
                 virtual void Print(std::ostream &str) const {
-                    /* Each byte will be 0-padded, in hex */
+                    /* Each byte_ will be 0-padded, in hex */
                     str << std::hex;
                     for (size_t i = 0; i < n; ++i) {
                         /* group by 4 bytes */
@@ -168,26 +168,26 @@ namespace Crafter {
         void ParseLayerData(ParseInfo* info);
 
         void ParsePolicy(const size_t &policy_index,
-                         byte const **segment_end);
+                         byte_ const **segment_end);
 
         void PrintPolicy(std::ostream &str, const size_t &index) const;
 
         /* Generic routing header has fields 0-3  */
-        static const byte FieldFirstSegment = 4;
-        static const byte FieldCFlag = 5;
-        static const byte FieldPFlag = 6;
-        static const byte FieldReserved = 7;
-        static const byte FieldPolicyFlag1 = 8;
-        static const byte FieldPolicyFlag2 = 9;
-        static const byte FieldPolicyFlag3 = 10;
-        static const byte FieldPolicyFlag4 = 11;
-        static const byte FieldHMACKeyID = 12;
+        static const byte_ FieldFirstSegment = 4;
+        static const byte_ FieldCFlag = 5;
+        static const byte_ FieldPFlag = 6;
+        static const byte_ FieldReserved = 7;
+        static const byte_ FieldPolicyFlag1 = 8;
+        static const byte_ FieldPolicyFlag2 = 9;
+        static const byte_ FieldPolicyFlag3 = 10;
+        static const byte_ FieldPolicyFlag4 = 11;
+        static const byte_ FieldHMACKeyID = 12;
 
     protected:
 
         size_t GetRoutingPayloadSize() const;
 
-        void FillRoutingPayload(byte *payload) const;
+        void FillRoutingPayload(byte_ *payload) const;
 
     public:
 
@@ -227,7 +227,7 @@ namespace Crafter {
                     dynamic_cast<const IPv6SegmentRoutingHeader&>(right));
 		}
 
-        void SetFirstSegment(const byte& value) {
+        void SetFirstSegment(const byte_& value) {
             SetFieldValue(FieldFirstSegment,value);
         };
 
@@ -259,7 +259,7 @@ namespace Crafter {
             SetFieldValue(FieldPolicyFlag4,value);
         };
 
-        void SetHMACKeyID(const byte& value) {
+        void SetHMACKeyID(const byte_& value) {
             SetFieldValue(FieldHMACKeyID,value);
         };
 
@@ -267,8 +267,8 @@ namespace Crafter {
             SetFieldValue(FieldPolicyFlag1 + policy_index, value);
         };
 
-        byte  GetFirstSegment() const {
-            return GetFieldValue<byte>(FieldFirstSegment);
+        byte_  GetFirstSegment() const {
+            return GetFieldValue<byte_>(FieldFirstSegment);
         };
 
         word  GetCFlag() const {
@@ -299,8 +299,8 @@ namespace Crafter {
             return GetFieldValue<word>(FieldPolicyFlag4);
         };
 
-        byte  GetHMACKeyID() const {
-            return GetFieldValue<byte>(FieldHMACKeyID);
+        byte_  GetHMACKeyID() const {
+            return GetFieldValue<byte_>(FieldHMACKeyID);
         };
 
         word GetPolicyFlag(const size_t &policy_index) const {
@@ -314,9 +314,9 @@ namespace Crafter {
         int SetPolicy(const size_t &index, const policy_t &policy,
                 const policy_type_t &type);
 
-        int SetHMMAC(const byte &keyid, const hmac_t &hmac);
+        int SetHMMAC(const byte_ &keyid, const hmac_t &hmac);
 
-        void CopySegment(const byte *segment_start);
+        void CopySegment(const byte_ *segment_start);
 
         void PrintPayload(std::ostream& str) const;
 

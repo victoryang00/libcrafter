@@ -16,7 +16,7 @@ namespace Crafter {
 	protected:
 
 		/* Map common type numbers to the derived class */
-		virtual byte MapTypeNumber(short_word type) = 0;
+		virtual byte_ MapTypeNumber(short_word type) = 0;
 
 		void parseExtensionHeader(ParseInfo *info, word payload_len);
 
@@ -38,9 +38,9 @@ namespace Crafter {
 
                 bool IsType(short_word type) { return MapTypeNumber(type) == GetType(); }
 
-        virtual void SetType(const byte& value) = 0;
+        virtual void SetType(const byte_& value) = 0;
 
-        virtual void SetCode(const byte& value) = 0;
+        virtual void SetCode(const byte_& value) = 0;
 
         virtual void SetCheckSum(const short_word& value) = 0;
 
@@ -56,9 +56,9 @@ namespace Crafter {
 
         virtual short_word  GetSequenceNumber() const = 0;
 
-        virtual byte  GetType() const = 0;
+        virtual byte_  GetType() const = 0;
 
-        virtual byte  GetCode() const = 0;
+        virtual byte_  GetCode() const = 0;
 
         virtual short_word  GetCheckSum() const = 0;
 

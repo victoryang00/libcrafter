@@ -39,19 +39,19 @@ void TCPOptionMPTCPCapable::SetReceiverKey(const uint64_t& value) {
 	word* data = new word[2];
 	*((uint64_t *)data) = htonll(value);
 
-	SetPayload((const byte*)data,sizeof(uint64_t));
+	SetPayload((const byte_*)data, sizeof(uint64_t));
 }
 
 uint64_t TCPOptionMPTCPCapable::GetReceiverKey() const {
 	size_t payload_size = GetPayloadSize();
 	if( payload_size > 0) {
-		const byte* raw_data = GetPayload().GetRawPointer();
+		const byte_* raw_data = GetPayload().GetRawPointer();
 		return ntohll(*(const uint64_t *)(raw_data));
 	}
 	return 0;
 }
 
-TCPOptionLayer* TCPOptionMPTCP::Build(byte subopt) {
+TCPOptionLayer* TCPOptionMPTCP::Build(byte_ subopt) {
 
 	switch(subopt) {
 	case 0:

@@ -34,7 +34,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 namespace Crafter {
 
-	class ByteField : public Field<byte> {
+	class ByteField : public Field<byte_> {
 
 		void PrintValue(std::ostream& str) const;
 
@@ -47,9 +47,9 @@ namespace Crafter {
 
 		ByteField(const std::string& name, size_t nword, size_t nbyte);
 
-		void Write(byte* raw_data) const;
+		void Write(byte_* raw_data) const;
 
-		void Read(const byte* raw_data);
+		void Read(const byte_* raw_data);
 
 		FieldInfo* Clone() const;
 
@@ -86,9 +86,9 @@ namespace Crafter {
 
 		ShortField(const std::string& name, size_t nword, size_t nbyte);
 
-		void Write(byte* raw_data) const;
+		void Write(byte_* raw_data) const;
 
-		void Read(const byte* raw_data);
+		void Read(const byte_* raw_data);
 
 		FieldInfo* Clone() const;
 
@@ -108,9 +108,9 @@ namespace Crafter {
 
 		ShortHostField(const std::string& name, size_t nword, size_t nbyte);
 
-		void Write(byte* raw_data) const;
+		void Write(byte_* raw_data) const;
 
-		void Read(const byte* raw_data);
+		void Read(const byte_* raw_data);
 
 		FieldInfo* Clone() const;
 
@@ -119,7 +119,7 @@ namespace Crafter {
 
 	class ShortHostNetField : public ShortHostField {
 	public:
-		void Read(const byte* raw_data);
+		void Read(const byte_* raw_data);
 		ShortHostNetField(const std::string& name, size_t nword, size_t nbyte);
 		FieldInfo* Clone() const;
 		virtual ~ShortHostNetField();
@@ -146,9 +146,9 @@ namespace Crafter {
 
 		WordField(const std::string& name, size_t nword, size_t nbyte);
 
-		void Write(byte* raw_data) const;
+		void Write(byte_* raw_data) const;
 
-		void Read(const byte* raw_data);
+		void Read(const byte_* raw_data);
 
 		FieldInfo* Clone() const;
 
@@ -168,9 +168,9 @@ namespace Crafter {
 
 		WordHostField(const std::string& name, size_t nword, size_t nbyte);
 
-		void Write(byte* raw_data) const;
+		void Write(byte_* raw_data) const;
 
-		void Read(const byte* raw_data);
+		void Read(const byte_* raw_data);
 
 		FieldInfo* Clone() const;
 
@@ -198,9 +198,9 @@ namespace Crafter {
 
 		Int64Field(const std::string& name, size_t nword, size_t nbyte);
 
-		void Write(byte* raw_data) const;
+		void Write(byte_* raw_data) const;
 
-		void Read(const byte* raw_data);
+		void Read(const byte_* raw_data);
 
 		FieldInfo* Clone() const;
 

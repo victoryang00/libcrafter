@@ -95,7 +95,7 @@ size_t DNS::DNSQuery::Compress() {
 	return -1;
 }
 
-size_t DNS::DNSQuery::Write(byte* data_ptr) const {
+size_t DNS::DNSQuery::Write(byte_* data_ptr) const {
 	/* Write the query into the buffer, should correctly allocated */
 	memcpy(data_ptr, cqname, size - 2 * sizeof(short_word));
 

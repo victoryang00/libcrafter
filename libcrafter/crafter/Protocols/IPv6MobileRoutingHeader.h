@@ -49,15 +49,15 @@ namespace Crafter {
         void Craft();
 
         /* Generic routing header has field 0-3 */
-        static const byte FieldReserved = 4;
-        static const byte FieldHomeAddress = 5;
+        static const byte_ FieldReserved = 4;
+        static const byte_ FieldHomeAddress = 5;
 
     protected:
 
         /* Everything is already included in the header */
         size_t GetRoutingPayloadSize() const { return 0; }
         /* Nothing to do here */
-        void FillRoutingPayload(byte *payload) const { (void)payload; }
+        void FillRoutingPayload(byte_ *payload) const { (void)payload; }
 
     public:
 

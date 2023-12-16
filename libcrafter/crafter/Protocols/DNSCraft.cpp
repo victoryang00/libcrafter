@@ -84,8 +84,8 @@ void DNS::Craft() {
 		payload_size += (*it_add).GetSize();
 
 	/* Create the raw data to add as a payload */
-	byte *raw_payload = new byte[payload_size];
-	byte *cpy_ptr = raw_payload;
+	byte_ *raw_payload = new byte_[payload_size];
+	byte_ *cpy_ptr = raw_payload;
 
 	/* Iterate through each Query and write the raw data */
 	for(it_query  = Queries.begin() ; it_query != Queries.end() ; it_query++) {
@@ -148,7 +148,7 @@ void SetContainerSection(vector<DNS::DNSAnswer>& container, ns_sect section, ns_
 
         if (qtype == DNS::TypeA || qtype == DNS::TypeAAAA) {
 			/* Parse the IP address */
-			const byte* rdata_ptr = ns_rr_rdata(rr);
+			const byte_* rdata_ptr = ns_rr_rdata(rr);
 
 			char str[INET6_ADDRSTRLEN];
 			inet_ntop(qtype == DNS::TypeA ? AF_INET : AF_INET6, rdata_ptr,
@@ -213,7 +213,7 @@ void DNS::PrintPayload(ostream& str) const {
 
 }
 
-void DNS::ParseFromBuffer(const byte *buf, size_t len)
+void DNS::ParseFromBuffer(const byte_ *buf, size_t len)
 {
 	/* Initialize the response parser */
 	ns_msg handle;

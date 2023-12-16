@@ -35,7 +35,7 @@ using namespace std;
 using namespace Crafter;
 
 ByteField::ByteField(const std::string& name, size_t nword, size_t nbyte) :
-		             Field<byte> (name,nword,nbyte*8,8),
+		             Field<byte_> (name, nword, nbyte * 8, 8),
                      nword(nword), nbyte(nbyte) {
 	offset = nword * 4 + nbyte;
 }
@@ -50,11 +50,11 @@ FieldInfo* ByteField::Clone() const {
 	return new_ptr;
 }
 
-void ByteField::Write(byte* raw_data) const {
+void ByteField::Write(byte_* raw_data) const {
 	raw_data[offset] = human;
 }
 
-void ByteField::Read(const byte* raw_data){
+void ByteField::Read(const byte_* raw_data){
 	human = raw_data[offset];
 }
 
@@ -120,12 +120,12 @@ FieldInfo* ShortField::Clone() const {
 	return new_ptr;
 }
 
-void ShortField::Write(byte* raw_data) const {
+void ShortField::Write(byte_* raw_data) const {
 	short_word* ptr = (short_word*)(raw_data + offset);
 	*ptr = htons(human);
 }
 
-void ShortField::Read(const byte* raw_data){
+void ShortField::Read(const byte_* raw_data){
 	short_word* ptr = (short_word*)(raw_data + offset);
 	human = ntohs(*ptr);
 }
@@ -148,12 +148,12 @@ FieldInfo* ShortHostField::Clone() const {
 	return new_ptr;
 }
 
-void ShortHostField::Write(byte* raw_data) const {
+void ShortHostField::Write(byte_* raw_data) const {
 	short_word* ptr = (short_word*)(raw_data + offset);
 	*ptr = human;
 }
 
-void ShortHostField::Read(const byte* raw_data){
+void ShortHostField::Read(const byte_* raw_data){
 	short_word* ptr = (short_word*)(raw_data + offset);
 	human = *ptr;
 }
@@ -164,7 +164,7 @@ ShortHostNetField::ShortHostNetField(const std::string& name, size_t nword, size
 									ShortHostField(name,nword,nbyte)
                          { /* */ }
 
-void ShortHostNetField::Read(const byte* raw_data){
+void ShortHostNetField::Read(const byte_* raw_data){
 	short_word* ptr = (short_word*)(raw_data + offset);
 	human = ntohs(*ptr);
 }
@@ -209,12 +209,12 @@ FieldInfo* WordField::Clone() const {
 	return new_ptr;
 }
 
-void WordField::Write(byte* raw_data) const {
+void WordField::Write(byte_* raw_data) const {
 	word* ptr = (word*)(raw_data + offset);
 	*ptr = htonl(human);
 }
 
-void WordField::Read(const byte* raw_data){
+void WordField::Read(const byte_* raw_data){
 	word* ptr = (word*)(raw_data + offset);
 	human = ntohl(*ptr);
 }
@@ -237,12 +237,12 @@ FieldInfo* WordHostField::Clone() const {
 	return new_ptr;
 }
 
-void WordHostField::Write(byte* raw_data) const {
+void WordHostField::Write(byte_* raw_data) const {
 	word* ptr = (word*)(raw_data + offset);
 	*ptr = human;
 }
 
-void WordHostField::Read(const byte* raw_data){
+void WordHostField::Read(const byte_* raw_data){
 	word* ptr = (word*)(raw_data + offset);
 	human = *ptr;
 }
@@ -281,12 +281,12 @@ FieldInfo* Int64Field::Clone() const {
 	return new_ptr;
 }
 
-void Int64Field::Write(byte* raw_data) const {
+void Int64Field::Write(byte_* raw_data) const {
 	uint64_t* ptr = (uint64_t*)(raw_data + offset);
 	*ptr = htonll(human);
 }
 
-void Int64Field::Read(const byte* raw_data){
+void Int64Field::Read(const byte_* raw_data){
 	uint64_t* ptr = (uint64_t*)(raw_data + offset);
 	human = ntohll(*ptr);
 }

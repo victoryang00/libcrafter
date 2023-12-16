@@ -89,7 +89,7 @@ namespace Crafter {
 		/* Compiled BPF filter */
 		struct bpf_program fp;
 		/* Flag if the thread was spawned */
-		byte spawned;
+		byte_ spawned;
 
 		/* -------------- Static Members ---------------- */
 

@@ -54,12 +54,12 @@ namespace Crafter {
         virtual size_t GetRoutingPayloadSize() const;
 
         /* Copy the raw data of the payload of this routing header */
-        virtual void FillRoutingPayload(byte *payload) const;
+        virtual void FillRoutingPayload(byte_ *payload) const;
 
-        static const byte FieldNextHeader = 0;
-        static const byte FieldHeaderExtLen = 1;
-        static const byte FieldRoutingType = 2;
-        static const byte FieldSegmentLeft = 3;
+        static const byte_ FieldNextHeader = 0;
+        static const byte_ FieldHeaderExtLen = 1;
+        static const byte_ FieldRoutingType = 2;
+        static const byte_ FieldSegmentLeft = 3;
 
     public:
 
@@ -84,36 +84,36 @@ namespace Crafter {
 			return IPv6RoutingHeader::operator=(dynamic_cast<const IPv6RoutingHeader&>(right));
         }
 
-        void SetNextHeader(const byte& value) {
+        void SetNextHeader(const byte_& value) {
             SetFieldValue(FieldNextHeader,value);
         };
 
-        void SetHeaderExtLen(const byte& value) {
+        void SetHeaderExtLen(const byte_& value) {
             SetFieldValue(FieldHeaderExtLen,value);
         };
 
-        void SetRoutingType(const byte& value) {
+        void SetRoutingType(const byte_& value) {
             SetFieldValue(FieldRoutingType,value);
         };
 
-        void SetSegmentLeft(const byte& value) {
+        void SetSegmentLeft(const byte_& value) {
             SetFieldValue(FieldSegmentLeft,value);
         };
 
-        byte  GetNextHeader() const {
-            return GetFieldValue<byte>(FieldNextHeader);
+        byte_  GetNextHeader() const {
+            return GetFieldValue<byte_>(FieldNextHeader);
         };
 
-        byte  GetHeaderExtLen() const {
-            return GetFieldValue<byte>(FieldHeaderExtLen);
+        byte_  GetHeaderExtLen() const {
+            return GetFieldValue<byte_>(FieldHeaderExtLen);
         };
 
-        byte  GetRoutingType() const {
-            return GetFieldValue<byte>(FieldRoutingType);
+        byte_  GetRoutingType() const {
+            return GetFieldValue<byte_>(FieldRoutingType);
         };
 
-        byte  GetSegmentLeft() const {
-            return GetFieldValue<byte>(FieldSegmentLeft);
+        byte_  GetSegmentLeft() const {
+            return GetFieldValue<byte_>(FieldSegmentLeft);
         };
 
         /* Build IPv6RoutingHeader layer from type */

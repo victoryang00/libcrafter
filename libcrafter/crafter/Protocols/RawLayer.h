@@ -59,13 +59,13 @@ namespace Crafter {
 
 			struct ExtraInfo {
 				/* Data */
-				const byte* raw_data;
+				const byte_* raw_data;
 				/* Number of bytes to push on the RawLayer payload */
 				size_t nbytes;
 				/* Next layer */
 				Layer* next_layer;
 
-				ExtraInfo(const byte* raw_data, size_t nbytes, Layer* next_layer) :
+				ExtraInfo(const byte_* raw_data, size_t nbytes, Layer* next_layer) :
 				          raw_data(raw_data), nbytes(nbytes), next_layer(next_layer) {};
 			};
 
@@ -74,7 +74,7 @@ namespace Crafter {
 			RawLayer();
 
 			/* Constructor from raw data */
-			RawLayer(const byte* data, size_t size);
+			RawLayer(const byte_* data, size_t size);
 
 			/* Constructor from string */
 			RawLayer(const char* str);
@@ -92,7 +92,7 @@ namespace Crafter {
 			const RawLayer operator+(const RawLayer& right) const;
 
 			/* The underlying data of the layer */
-			const byte * GetRawPointer() const;
+			const byte_ * GetRawPointer() const;
 
 			virtual ~RawLayer() { };
 		};
@@ -100,7 +100,7 @@ namespace Crafter {
 		class Pad : public RawLayer {
 
 		public:
-			Pad(byte value, size_t times);
+			Pad(byte_ value, size_t times);
 			~Pad() { /* */ };
 		};
 

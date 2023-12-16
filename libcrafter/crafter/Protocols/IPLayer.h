@@ -48,9 +48,9 @@ namespace Crafter {
 
         virtual std::string  GetDestinationIP() const = 0;
 
-        virtual byte* GetRawSourceIP() const = 0;
+        virtual byte_* GetRawSourceIP() const = 0;
         
-        virtual byte* GetRawDestinationIP() const = 0;
+        virtual byte_* GetRawDestinationIP() const = 0;
         
         /* Method to build IP layer from the source address */
         static IPLayer* BuildSrc(const std::string& ip_src);

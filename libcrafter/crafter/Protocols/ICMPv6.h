@@ -35,7 +35,7 @@ namespace Crafter {
 
         void DefineProtocol();
 
-		byte MapTypeNumber(short_word type);
+		byte_ MapTypeNumber(short_word type);
 
         Constructor GetConstructor() const {
             return ICMPv6::ICMPv6ConstFunc;
@@ -53,12 +53,12 @@ namespace Crafter {
 
         void ParseLayerData(ParseInfo* info);
 
-        static const byte FieldRestOfHeader = 3;
-        static const byte FieldMTU = 4;
-        static const byte FieldPointer = 5;
-        static const byte FieldIdentifier = 6;
-        static const byte FieldSequenceNumber = 7;
-        static const byte FieldLength = 8;
+        static const byte_ FieldRestOfHeader = 3;
+        static const byte_ FieldMTU = 4;
+        static const byte_ FieldPointer = 5;
+        static const byte_ FieldIdentifier = 6;
+        static const byte_ FieldSequenceNumber = 7;
+        static const byte_ FieldLength = 8;
 
     public:
 
@@ -67,14 +67,14 @@ namespace Crafter {
 		/* ------- Messages types --------- */
 
 		/* +++ Error messages +++ */
-		static const byte DestinationUnreachable;
-		static const byte TimeExceeded;
-		static const byte ParameterProblem;
-		static const byte PacketTooBig;
+		static const byte_ DestinationUnreachable;
+		static const byte_ TimeExceeded;
+		static const byte_ ParameterProblem;
+		static const byte_ PacketTooBig;
 
 		/* +++ Request and replies +++ */
-		static const byte EchoRequest;
-		static const byte EchoReply;
+		static const byte_ EchoRequest;
+		static const byte_ EchoReply;
 
         ICMPv6();
 
@@ -98,7 +98,7 @@ namespace Crafter {
             SetFieldValue(FieldSequenceNumber,value);
         };
 
-        void SetLength(const byte& value) {
+        void SetLength(const byte_& value) {
             SetFieldValue(FieldLength,value);
         };
 
@@ -122,8 +122,8 @@ namespace Crafter {
             return GetFieldValue<short_word>(FieldSequenceNumber);
         };
 
-        byte  GetLength() const {
-            return GetFieldValue<byte>(FieldLength);
+        byte_  GetLength() const {
+            return GetFieldValue<byte_>(FieldLength);
         };
 
         ~ICMPv6() { /* Destructor */ };

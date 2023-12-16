@@ -81,15 +81,15 @@ namespace Crafter {
 		static int BindRawSocketToInterface(const std::string &device, int rawsock);
 
 		/* Write data on the wire */
-		static int SendLinkSocket(int rawsock, byte *pkt, size_t pkt_len);
-		static int SendRawSocket(int rawsock, struct sockaddr *din, size_t size_dst, byte *pkt, size_t pkt_len);
+		static int SendLinkSocket(int rawsock, byte_ *pkt, size_t pkt_len);
+		static int SendRawSocket(int rawsock, struct sockaddr *din, size_t size_dst, byte_ *pkt, size_t pkt_len);
 
 	public:
 
 		/* Request a socket */
 		static int RequestSocket(const std::string& iface, word proto_id);
 		/* Write into a socket */
-		static int SendSocket(int rawsock, word proto_id, byte *pkt, size_t pkt_len);
+		static int SendSocket(int rawsock, word proto_id, byte_ *pkt, size_t pkt_len);
 
 		~SocketSender();
 	};

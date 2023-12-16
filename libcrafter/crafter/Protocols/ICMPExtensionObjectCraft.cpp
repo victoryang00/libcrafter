@@ -32,12 +32,12 @@ using namespace Crafter;
 using namespace std;
 
 /* Classes (ClassNum) */
-const byte ICMPExtensionObject::MPLS = 1;
+const byte_ ICMPExtensionObject::MPLS = 1;
 
 /* Types (CType) */
 /* +++ MPLS +++ */
-const byte ICMPExtensionObject::MPLSReserved = 0;
-const byte ICMPExtensionObject::MPLSIncoming = 1;
+const byte_ ICMPExtensionObject::MPLSReserved = 0;
+const byte_ ICMPExtensionObject::MPLSIncoming = 1;
 
 void ICMPExtensionObject::ReDefineActiveFields() {
 }

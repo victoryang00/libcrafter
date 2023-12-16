@@ -52,22 +52,22 @@ void Crafter::PrintBits (word value) {
 	cout << endl;
 }
 
-word Crafter::SetBit(word value, byte bit)
+word Crafter::SetBit(word value, byte_ bit)
 {
 	return value | (1 << bit);
 }
 
-word Crafter::ResetBit(word value, byte bit)
+word Crafter::ResetBit(word value, byte_ bit)
 {
 	return value & ( ~(1 << bit) );
 }
 
-word Crafter::TestBit(word value, byte bit)
+word Crafter::TestBit(word value, byte_ bit)
 {
 	return 1&&(value & (1 << bit));
 }
 
-word Crafter::ShiftRight(word value, byte ntimes) {
+word Crafter::ShiftRight(word value, byte_ ntimes) {
 	for (short_word i = 0 ; i < ntimes ; i++)
 		value >>= 1;
 
@@ -75,25 +75,25 @@ word Crafter::ShiftRight(word value, byte ntimes) {
 }
 
 /* Shift bits to right ntimes */
-word Crafter::ShiftLeft(word value, byte ntimes) {
+word Crafter::ShiftLeft(word value, byte_ ntimes) {
 	for (short_word i = 0 ; i < ntimes ; i++)
 		value <<= 1;
 
 	return value;
 }
 
-word Crafter::ClearRange(word value, byte ibit, byte ebit) {
-	for (byte i = ibit; i <= ebit ; i++)
+word Crafter::ClearRange(word value, byte_ ibit, byte_ ebit) {
+	for (byte_ i = ibit; i <= ebit ; i++)
 		value = ResetBit(value,i);
 
 	return value;
 }
 
-word Crafter::ClearComplementRange(word value, byte ibit, byte ebit) {
-	for (byte i = 0; i < ibit ; i++)
+word Crafter::ClearComplementRange(word value, byte_ ibit, byte_ ebit) {
+	for (byte_ i = 0; i < ibit ; i++)
 		value = ResetBit(value,i);
 
-	for (byte i = ebit + 1; i <= 31 ; i++)
+	for (byte_ i = ebit + 1; i <= 31 ; i++)
 		value = ResetBit(value,i);
 
 	return value;

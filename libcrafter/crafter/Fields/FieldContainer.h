@@ -42,7 +42,7 @@ namespace Crafter {
 	class FieldContainer : public std::vector<FieldInfo*> {
 
 		/* Flag if the Container support overlapped fields */
-		byte overlaped_flag;
+		byte_ overlaped_flag;
 		/* Set of active fields (only used on containers that supports overlapped fields) */
 		std::set<size_t> ActiveFields;
 
@@ -89,8 +89,8 @@ namespace Crafter {
 		R GetField(size_t nfield) const;
 
 		/* Set overlapped field */
-		void SetOverlap(byte flag) {overlaped_flag = flag;};
-		byte GetOverlap() const {return overlaped_flag;};
+		void SetOverlap(byte_ flag) { overlaped_flag = flag;};
+		byte_ GetOverlap() const {return overlaped_flag;};
 
 		/* Function that set a field as active */
 		void SetActive(size_t nfield);

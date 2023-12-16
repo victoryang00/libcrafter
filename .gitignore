@@ -75,3 +75,6 @@ missing
 config.h.in
 compile
 tags
+
+.idea
+cmake-build-debug

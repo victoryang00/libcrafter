@@ -50,9 +50,9 @@ namespace Crafter {
 
         void ParseLayerData(ParseInfo* info);
 
-        static const byte FieldVersion = 0;
-        static const byte FieldReserved = 1;
-        static const byte FieldCheckSum = 2;
+        static const byte_ FieldVersion = 0;
+        static const byte_ FieldReserved = 1;
+        static const byte_ FieldCheckSum = 2;
 
     public:
 

@@ -30,20 +30,20 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 using namespace std;
 using namespace Crafter;
 
-void Payload::SetPayload (const byte *data, size_t ndata) {
+void Payload::SetPayload (const byte_ *data, size_t ndata) {
 	storage.clear();
 	AddPayload(data,ndata);
 }
 
 /* Add more stuff to the payload */
-void Payload::AddPayload (const byte* data, size_t ndata) {	
+void Payload::AddPayload (const byte_* data, size_t ndata) {
 	storage.insert(storage.end(), data, data + ndata);
 }
 
 /* Set payload */
 void Payload::SetPayload (const char *data) {
 	size_t ndata = strlen(data);
-	storage = vector<byte>(data, data + ndata);
+	storage = vector<byte_>(data, data + ndata);
 }
 
 /* Add more stuff to the payload */
@@ -61,11 +61,11 @@ void Payload::AddPayload (const Payload& payload) {
 }
 
 /* Copy the data into the pointer and returns the number of bytes copied */
-size_t Payload::GetPayload(byte* dst) const {
+size_t Payload::GetPayload(byte_* dst) const {
 	return std::copy(storage.begin(), storage.end(), dst) - dst;
 }
 
-size_t Payload::GetPayload(byte* dst, size_t ndata) const {
+size_t Payload::GetPayload(byte_* dst, size_t ndata) const {
 	size_t size = GetSize();
 	if(size > ndata) {
 		size = ndata;

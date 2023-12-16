@@ -49,10 +49,10 @@ namespace Crafter {
 
         void ParseLayerData(ParseInfo* info);
 
-        static const byte FieldPCP = 0;
-        static const byte FieldDEI = 1;
-        static const byte FieldVID = 2;
-        static const byte FieldType = 3;
+        static const byte_ FieldPCP = 0;
+        static const byte_ FieldDEI = 1;
+        static const byte_ FieldVID = 2;
+        static const byte_ FieldType = 3;
 
     public:
 

@@ -51,9 +51,9 @@ namespace Crafter {
 
         void Craft();
 
-        static const byte FieldKind = 0;
-        static const byte FieldLength = 1;
-        static const byte FieldSubtype = 2;
+        static const byte_ FieldKind = 0;
+        static const byte_ FieldLength = 1;
+        static const byte_ FieldSubtype = 2;
 
     public:
 
@@ -61,11 +61,11 @@ namespace Crafter {
 
         TCPOptionMPTCP();
 
-        void SetKind(const byte& value) {
+        void SetKind(const byte_& value) {
             SetFieldValue(FieldKind,value);
         };
 
-        void SetLength(const byte& value) {
+        void SetLength(const byte_& value) {
             SetFieldValue(FieldLength,value);
         };
 
@@ -73,22 +73,22 @@ namespace Crafter {
             SetFieldValue(FieldSubtype,value);
         };
 
-        byte  GetKind() const {
-            return GetFieldValue<byte>(FieldKind);
+        byte_  GetKind() const {
+            return GetFieldValue<byte_>(FieldKind);
         };
 
-        byte  GetLength() const {
-            return GetFieldValue<byte>(FieldLength);
+        byte_  GetLength() const {
+            return GetFieldValue<byte_>(FieldLength);
         };
 
-        byte GetSubtype(const word& value) {
+        byte_ GetSubtype(const word& value) {
             return GetFieldValue<word>(FieldSubtype);
         };
 
         ~TCPOptionMPTCP() { /* Destructor */ };
 
         /* Build MPTCP options from subopt */
-        static TCPOptionLayer* Build(byte subopt);
+        static TCPOptionLayer* Build(byte_ subopt);
 
     };
 
@@ -104,11 +104,11 @@ namespace Crafter {
             return new TCPOptionMPTCPJoin;
         };
 
-        static const byte Blank = 3;
-        static const byte BackupPath = 4;
-        static const byte AddrID = 5;
-        static const byte ReceiverToken = 6;
-        static const byte SenderRandomNumber = 7;
+        static const byte_ Blank = 3;
+        static const byte_ BackupPath = 4;
+        static const byte_ AddrID = 5;
+        static const byte_ ReceiverToken = 6;
+        static const byte_ SenderRandomNumber = 7;
 
     public:
 
@@ -120,7 +120,7 @@ namespace Crafter {
             SetFieldValue(BackupPath,value);
         };
 
-        void SetAddrID(const byte& value) {
+        void SetAddrID(const byte_& value) {
             SetFieldValue(AddrID,value);
         };
 
@@ -136,8 +136,8 @@ namespace Crafter {
             return GetFieldValue<word>(BackupPath);
         };
 
-        byte GetAddrID() const {
-            return GetFieldValue<byte>(AddrID);
+        byte_ GetAddrID() const {
+            return GetFieldValue<byte_>(AddrID);
         };
 
         uint32_t GetReceiverToken() const {
@@ -174,11 +174,11 @@ namespace Crafter {
             return new TCPOptionMPTCPCapable;
         };
 
-        static const byte Version = 3;
-        static const byte Checksum = 4;
-        static const byte Flags = 5;
-        static const byte Crypto = 6;
-        static const byte SenderKey = 7;
+        static const byte_ Version = 3;
+        static const byte_ Checksum = 4;
+        static const byte_ Flags = 5;
+        static const byte_ Crypto = 6;
+        static const byte_ SenderKey = 7;
 
     public:
 
@@ -204,11 +204,11 @@ namespace Crafter {
 
         void SetReceiverKey(const uint64_t& value);
 
-        byte GetVersion() const {
+        byte_ GetVersion() const {
             return GetFieldValue<word>(Version);
         };
 
-        byte GetChecksum() const {
+        byte_ GetChecksum() const {
             return GetFieldValue<word>(Checksum);
         };
 

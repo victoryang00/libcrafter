@@ -53,12 +53,12 @@ namespace Crafter {
 	short_word CheckSum(const short_word *buf, int nwords);
 
 	/* RNGs */
-	byte RNG8();
+	byte_ RNG8();
 	short_word RNG16();
 	word RNG32();
 
 	/* Verbose mode of the library */
-	void Verbose(byte value);
+	void Verbose(byte_ value);
 
 	class Layer {
 		/* Size in bytes of the header, not including the payload */
@@ -99,7 +99,7 @@ namespace Crafter {
 		/* Name of the layer */
 		std::string name;
 		/* Raw data from the layer */
-		byte* raw_data;
+		byte_* raw_data;
 		/* Map of fields values and names */
 		FieldContainer Fields;
 		/* Payload of the Layer */
@@ -153,7 +153,7 @@ namespace Crafter {
 		FieldInfo* GetFieldPtr(size_t nfield);
 
 		/* Check if the field_name was set by the user */
-		byte IsFieldSet(size_t nfield) const;
+		byte_ IsFieldSet(size_t nfield) const;
 
 		/* Reset all field */
 		void ResetFields();
@@ -219,7 +219,7 @@ namespace Crafter {
 		struct ParseInfo {
 			/* READ ONLY inside ParseData */
 			/* Pointer to the original data, this should be set only once at the begging*/
-			const byte* raw_data;
+			const byte_* raw_data;
 			/* Total length of the data */
 			size_t total_size;
 
@@ -231,7 +231,7 @@ namespace Crafter {
 			/* Additional information that a layer may need to communicate to other layer */
 			void* extra_info;
 			/* Reach top of the packet */
-			byte top;
+			byte_ top;
 			/* Constructor */
 			ParseInfo() : raw_data(0), total_size(0), offset(0), next_layer(0), extra_info(0), top(0) {};
 		};
@@ -285,21 +285,21 @@ namespace Crafter {
 		 * This function construct the layer from raw data and
 		 * returns the number of bytes read
 		 */
-		size_t PutData(const byte* data);
+		size_t PutData(const byte_* data);
 
 		/* Get data from this layer to the top */
-		size_t GetData(byte* buffer) const;
+		size_t GetData(byte_* buffer) const;
 
 		/* Just get the data of this layer */
-		size_t GetRawData(byte* buffer) const;
+		size_t GetRawData(byte_* buffer) const;
 
 		/* --------- Payload manipulation functions ---------- */
 
 		/* Set payload */
-		void SetPayload (const byte *data, int ndata);
+		void SetPayload (const byte_ *data, int ndata);
 
 		/* Add more stuff to the payload */
-		void AddPayload (const byte* data, int ndata);
+		void AddPayload (const byte_* data, int ndata);
 
 		/* Set payload */
 		void SetPayload (const char *data);
@@ -314,7 +314,7 @@ namespace Crafter {
 		void AddPayload (const Payload& payload);
 
 		/* Copy the data into the pointer and returns the number of bytes copied */
-		size_t GetPayload(byte* dst) const;
+		size_t GetPayload(byte_* dst) const;
 
 		/* Returns a constant reference to the payload */
 		const Payload& GetPayload() const { return LayerPayload; };
@@ -447,7 +447,7 @@ namespace Crafter {
 	};
 
 	/* Verbose Mode */
-	extern byte ShowWarnings;
+	extern byte_ ShowWarnings;
 
 }
 

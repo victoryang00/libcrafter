@@ -49,10 +49,10 @@ namespace Crafter {
 
         void ReDefineActiveFields();
 
-        static const byte FieldSrcPort = 0;
-        static const byte FieldDstPort = 1;
-        static const byte FieldLength = 2;
-        static const byte FieldCheckSum = 3;
+        static const byte_ FieldSrcPort = 0;
+        static const byte_ FieldDstPort = 1;
+        static const byte_ FieldLength = 2;
+        static const byte_ FieldCheckSum = 3;
 
     public:
 

@@ -56,8 +56,8 @@ void ICMPLayer::parseExtensionHeader(ParseInfo *info, word payload_len)
 			 * were present.
 			 * BUT info->offset already accounts for the 8 octets for the
 			 * first two words of the ICMP message, hence the substraction. */
-			byte *ext_hdr = (byte *)(info->raw_data + info->offset + 128);
-			byte version = (*ext_hdr) >> 4;
+			byte_ *ext_hdr = (byte_ *)(info->raw_data + info->offset + 128);
+			byte_ version = (*ext_hdr) >> 4;
 			/* Checksum: 16 bits. The one's complement of the one's
 			 * complement sum of the data structure, with the checksum
 			 * field replaced by zero for the purpose of computing the

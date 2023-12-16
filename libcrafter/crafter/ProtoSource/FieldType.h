@@ -189,7 +189,7 @@ class BytesFieldType : public FieldType {
     }
 public:
 
-    BytesFieldType(const std::string& name) : FieldType(name,"BytesField","std::vector<byte> ") { /* */ };
+    BytesFieldType(const std::string& name) : FieldType(name,"BytesField","std::vector<byte_> ") { /* */ };
     std::string ReturnDefinition() const {
 		return "new " + type + "<" + size + ">(\"" + name + "\"," + nword + "," + nbyte +")";
     }
@@ -272,7 +272,7 @@ class ByteFieldType : public FieldType {
     }
 public:
 
-    ByteFieldType(const std::string& name) : FieldType(name,"ByteField","byte") { /* */ };
+    ByteFieldType(const std::string& name) : FieldType(name,"ByteField","byte_") { /* */ };
     std::string ReturnDefinition() const {
 		return "new " + type + "(\"" + name + "\"," + nword + "," + nbyte +")";
     }
@@ -314,7 +314,7 @@ class XByteFieldType : public FieldType {
     }
 public:
 
-    XByteFieldType(const std::string& name) : FieldType(name,"XByteField","byte") { /* */ };
+    XByteFieldType(const std::string& name) : FieldType(name,"XByteField","byte_") { /* */ };
     std::string ReturnDefinition() const {
 		return "new " + type + "(\"" + name + "\"," + nword + "," + nbyte +")";
     }

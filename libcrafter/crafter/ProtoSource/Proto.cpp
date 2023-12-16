@@ -107,7 +107,7 @@ void Proto::PrintHdr() const {
 	/* Print the fields on the correct order and reference */
 	size_t i = 0;
 	for(it_field = begin() ; it_field != end() ; ++it_field) {
-		Printline(out,"static const byte Field" + (*it_field)->GetName() + " = " + toString(i) + ";",2);
+		Printline(out,"static const byte_ Field" + (*it_field)->GetName() + " = " + toString(i) + ";",2);
 		++i;
 	}
 	Newline(out);
@@ -227,7 +227,7 @@ void Proto::PrintCrafterCpp(ostream& out) const {
 static inline bool fexists(const string& filename)
 {
   ifstream ifile(filename.c_str());
-  return ifile;
+  return bool(ifile);
 }
 
 void Proto::PrintCpp() const {

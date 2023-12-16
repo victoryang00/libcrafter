@@ -214,7 +214,7 @@ static const std::string GetMACIPv4(const std::string& IPAddress, const string& 
 }
 
 const std::string GetMACIPv6(const std::string& IPAddress, const string& iface) {
-	byte buf[sizeof(struct in6_addr)];
+	byte_ buf[sizeof(struct in6_addr)];
 	inet_pton(AF_INET6, IPAddress.c_str(), buf);
 	char mac[19];
 	sprintf(mac, "%02x:%02x:%02x:%02x:%02x:%02x", buf[8]^(1 << 1), buf[9], buf[10], buf[13], buf[14], buf[15]);
@@ -413,13 +413,13 @@ vector<string> Crafter::GetIPs(const string& str_argv) {
 	return IPAddr;
 }
 
-/* Convert a container of ip address strings into raw data in network byte order */
-vector<byte> Crafter::IPtoRawData(const vector<string>& ips) {
-	/* Get the size of the byte data */
+/* Convert a container of ip address strings into raw data in network byte_ order */
+vector<byte_> Crafter::IPtoRawData(const vector<string>& ips) {
+	/* Get the size of the byte_ data */
 	size_t data_size = ips.size() * sizeof(word);
 
 	/* Create a container */
-	vector<byte> raw_data(data_size,0);
+	vector<byte_> raw_data(data_size, 0);
 
 	vector<string>::const_iterator it_str;
 
@@ -428,7 +428,7 @@ vector<byte> Crafter::IPtoRawData(const vector<string>& ips) {
 	for(it_str = ips.begin() ; it_str != ips.end() ; ++it_str) {
 		struct in_addr num_ip = { inet_addr((*it_str).c_str()) };
 		for(size_t i = 0; i < sizeof(word) ; i++) {
-			raw_data[raw_counter] = ((byte*)&num_ip.s_addr)[i];
+			raw_data[raw_counter] = ((byte_*)&num_ip.s_addr)[i];
 			raw_counter++;
 		}
 	}
@@ -436,8 +436,8 @@ vector<byte> Crafter::IPtoRawData(const vector<string>& ips) {
 	return raw_data;
 }
 
-/* Convert raw data in network byte order into a container of ip address strings */
-vector<string> Crafter::RawDatatoIP(const vector<byte>& raw_data) {
+/* Convert raw data in network byte_ order into a container of ip address strings */
+vector<string> Crafter::RawDatatoIP(const vector<byte_>& raw_data) {
 	/* Container size */
 	size_t raw_size = raw_data.size();
 	size_t str_size = raw_size/4;

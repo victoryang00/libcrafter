@@ -35,12 +35,12 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 using namespace std;
 using namespace Crafter;
 
-void Packet::GetFromLayer(const byte* data, size_t length, short_word proto_id) {
+void Packet::GetFromLayer(const byte_* data, size_t length, short_word proto_id) {
 	/* Check for the special case of IPLayer::PROTO */
 	if(proto_id == IPLayer::PROTO && (length > 0)) {
 		/* Check version on the first bits of the data */
-		byte ip_data = data[0];
-		byte version = (ip_data & 0xf0) >> 4;
+		byte_ ip_data = data[0];
+		byte_ version = (ip_data & 0xf0) >> 4;
 		if(version == 4) proto_id = IP::PROTO;
 		else if(version == 6) proto_id = IPv6::PROTO;
 		else proto_id = 0;
@@ -108,7 +108,7 @@ void Packet::GetFromLayer(const byte* data, size_t length, short_word proto_id) 
 	delete info;
 }
 
-void Packet::Decode(const byte* data, size_t length, short_word proto_id) {
+void Packet::Decode(const byte_* data, size_t length, short_word proto_id) {
 	/* First remove bytes for the raw data */
 	if (raw_data) {
 		bytes_size = 0;
@@ -133,7 +133,7 @@ void Packet::Decode(const RawLayer& data, short_word proto_id) {
 /* [+] ----------- From Link layer */
 
 /* Constructor from raw data */
-void Packet::PacketFromLinkLayer(const byte* data, size_t length, int link_proto) {
+void Packet::PacketFromLinkLayer(const byte_* data, size_t length, int link_proto) {
 
 	/* Next layer type (should be somewhere on the link protocol header) */
 	short_word first_layer = 0;
@@ -166,7 +166,7 @@ void Packet::PacketFromLinkLayer(const byte* data, size_t length, int link_proto
 }
 
 /* Just a wrapper for backward compatibility */
-void Packet::PacketFromEthernet(const byte* data, size_t length) {
+void Packet::PacketFromEthernet(const byte_* data, size_t length) {
 	Decode(data,length,Ethernet::PROTO);
 }
 
@@ -184,7 +184,7 @@ void Packet::PacketFromIP(const RawLayer& data) {
 }
 
 /* Constructor from raw data */
-void Packet::PacketFromIP(const byte* data, size_t length) {
+void Packet::PacketFromIP(const byte_* data, size_t length) {
 	Decode(data,length,IP::PROTO);
 }
 
@@ -196,6 +196,6 @@ void Packet::PacketFromIPv6(const RawLayer& data) {
 
 
 /* Constructor from raw data */
-void Packet::PacketFromIPv6(const byte* data, size_t length) {
+void Packet::PacketFromIPv6(const byte_* data, size_t length) {
 	Decode(data,length,IPv6::PROTO);
 }

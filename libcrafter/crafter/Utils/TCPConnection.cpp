@@ -116,7 +116,7 @@ void TCPBuffer::Add(word seq, const Payload& payload) {
 		seq_table[long_seq] = payload;
 }
 
-byte TCPBuffer::Push(word seq, Crafter::Payload& buffer) {
+byte_ TCPBuffer::Push(word seq, Crafter::Payload& buffer) {
 	/* 64 bit sequence number */
 	uint64_t long_seq = seq;
 	uint64_t const_long = 4294967295ul;
@@ -518,7 +518,7 @@ void TCPConnection::Sync(word _seq) {
 
 }
 
-void TCPConnection::Send(const byte* buffer, size_t size) {
+void TCPConnection::Send(const byte_* buffer, size_t size) {
 	if(status == ESTABLISHED || status == CLOSE_WAIT) {
 	    pthread_mutex_lock (&mutex);
 
@@ -596,10 +596,10 @@ void TCPConnection::Send(const char* buffer) {
 	}
 }
 
-byte TCPConnection::Read(Payload& payload) {
+byte_ TCPConnection::Read(Payload& payload) {
 	pthread_mutex_lock (&mutex);
 
-	byte read_status = (status == ESTABLISHED || status == FIN_WAIT_1 || status == FIN_WAIT_2);
+	byte_ read_status = (status == ESTABLISHED || status == FIN_WAIT_1 || status == FIN_WAIT_2);
 
 	while (!read_flag && read_status) {
 

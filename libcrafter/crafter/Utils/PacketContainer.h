@@ -77,7 +77,7 @@ namespace Crafter {
 
 	void ClosePcapDumper(pcap_t* pd, pcap_dumper_t* pdumper);
 
-	void DumperPcap(pcap_dumper_t* pdumper, struct pcap_pkthdr* header, const byte* raw_data);
+	void DumperPcap(pcap_dumper_t* pdumper, struct pcap_pkthdr* header, const byte_* raw_data);
 
 	void OpenOffPcap(int* link_type, pcap_t*& handle, const std::string& filename, const std::string& filter);
 

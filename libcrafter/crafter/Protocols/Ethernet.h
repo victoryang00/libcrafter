@@ -49,9 +49,9 @@ namespace Crafter {
 
         void ParseLayerData(ParseInfo* info);
 
-        static const byte FieldDestinationMAC = 0;
-        static const byte FieldSourceMAC = 1;
-        static const byte FieldType = 2;
+        static const byte_ FieldDestinationMAC = 0;
+        static const byte_ FieldSourceMAC = 1;
+        static const byte_ FieldType = 2;
 
     public:
 

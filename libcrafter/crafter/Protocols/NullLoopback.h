@@ -47,7 +47,7 @@ namespace Crafter {
 
         void ParseLayerData(ParseInfo* info);
 
-        static const byte FieldFamily = 0;
+        static const byte_ FieldFamily = 0;
 
     public:
 

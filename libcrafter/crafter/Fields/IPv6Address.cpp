@@ -46,11 +46,11 @@ void IPv6Address::SetField(const string& ip_address) {
 }
 
 
-void IPv6Address::Write(byte* raw_data) const {
+void IPv6Address::Write(byte_* raw_data) const {
 	memcpy(raw_data + offset, &addr.s6_addr, sizeof(addr.s6_addr));
 }
 
-void IPv6Address::Read(const byte* raw_data) {
+void IPv6Address::Read(const byte_* raw_data) {
 	memcpy(&addr.s6_addr, raw_data + offset, sizeof(addr.s6_addr));
 	char addressBuffer[INET6_ADDRSTRLEN];
     inet_ntop(AF_INET6, &addr.s6_addr, addressBuffer, INET6_ADDRSTRLEN);

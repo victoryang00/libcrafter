@@ -48,9 +48,9 @@ namespace Crafter {
 
 		StringField(const std::string& name, size_t nword, size_t nbyte);
 
-		void Write(byte* raw_data) const;
+		void Write(byte_* raw_data) const;
 
-		void Read(const byte* raw_data);
+		void Read(const byte_* raw_data);
 
 		FieldInfo* Clone() const;
 
@@ -67,14 +67,14 @@ Crafter::StringField<size>::StringField(const std::string& name, size_t nword, s
 }
 
 template<size_t size>
-void Crafter::StringField<size>::Write(byte* raw_data) const {
-	memset(raw_data + offset,0,size * sizeof(byte));
+void Crafter::StringField<size>::Write(byte_* raw_data) const {
+	memset(raw_data + offset,0,size * sizeof(byte_));
 	for(size_t i = 0 ; i < size && i < human.size() ; i++)
 		raw_data[offset + i] = human[i];
 }
 
 template<size_t size>
-void Crafter::StringField<size>::Read(const byte* raw_data) {
+void Crafter::StringField<size>::Read(const byte_* raw_data) {
 	human = std::string((const char*)(raw_data + offset),size);
 }
 

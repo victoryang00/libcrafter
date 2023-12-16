@@ -74,7 +74,7 @@ void UDP::Craft() {
 
 			if(data_length%2 != 0) data_length++;
 
-			vector<byte> raw_buffer(data_length,0);
+			vector<byte_> raw_buffer(data_length, 0);
 
 			inet_pton(AF_INET, ip_layer->GetSourceIP().c_str(), &raw_buffer[0]);
 			inet_pton(AF_INET, ip_layer->GetDestinationIP().c_str(), &raw_buffer[4]);
@@ -97,7 +97,7 @@ void UDP::Craft() {
 
 			if(data_length%2 != 0) data_length++;
 
-			vector<byte> raw_buffer(data_length,0);
+			vector<byte_> raw_buffer(data_length, 0);
 
 			inet_pton(AF_INET6, ip_layer->GetSourceIP().c_str(), &raw_buffer[0]);
 			inet_pton(AF_INET6, ip_layer->GetDestinationIP().c_str(), &raw_buffer[16]);

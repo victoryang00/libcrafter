@@ -60,7 +60,7 @@ size_t IPv6RoutingHeader::GetRoutingPayloadSize() const {
     return GetHeaderExtLen() * 8 + 4;
 }
 
-void IPv6RoutingHeader::FillRoutingPayload(byte *payload) const {
+void IPv6RoutingHeader::FillRoutingPayload(byte_ *payload) const {
     /* Nothing to put in the payload, just nullify it */
     memset(payload, 0, GetRoutingPayloadSize());
 }
@@ -86,7 +86,7 @@ void IPv6RoutingHeader::Craft() {
 
     size_t payload_size = GetRoutingPayloadSize();
     if (payload_size) {
-        byte* raw_payload = new byte[payload_size];
+        byte_* raw_payload = new byte_[payload_size];
         FillRoutingPayload(raw_payload);
         SetPayload(raw_payload, payload_size);
         delete[] raw_payload;

@@ -31,7 +31,6 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #endif
 #include <cstdio>
 #include "MACAddress.h"
-#include "config.h"
 
 using namespace std;
 using namespace Crafter;
@@ -102,12 +101,12 @@ MACAddress::MACAddress(const std::string& name, size_t nword, size_t nbyte) :
 	offset = nword * 4 + nbyte;
 }
 
-void MACAddress::Write(byte* raw_data) const {
+void MACAddress::Write(byte_* raw_data) const {
 	struct ether_addr * ptr = (struct ether_addr *) (raw_data + offset);
 	ether_aton_r(human.c_str(),ptr);
 }
 
-void MACAddress::Read(const byte* raw_data) {
+void MACAddress::Read(const byte_* raw_data) {
 	const struct ether_addr * ptr = (const struct ether_addr *) (raw_data + offset);
 	char buf[19];
 	  sprintf (buf, "%02x:%02x:%02x:%02x:%02x:%02x",

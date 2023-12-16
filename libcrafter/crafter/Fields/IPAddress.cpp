@@ -49,11 +49,11 @@ void IPAddress::SetField(const string& ip_address) {
     inet_pton(AF_INET, human.c_str(), &address.s_addr);
 }
 
-void IPAddress::Write(byte* raw_data) const {
+void IPAddress::Write(byte_* raw_data) const {
 	memcpy(raw_data + offset, &address.s_addr, sizeof(address.s_addr));
 }
 
-void IPAddress::Read(const byte* raw_data) {
+void IPAddress::Read(const byte_* raw_data) {
 	memcpy(&address.s_addr, raw_data + offset, sizeof(address.s_addr));
     char str[INET_ADDRSTRLEN];
     inet_ntop(AF_INET, &address.s_addr, str, INET_ADDRSTRLEN);

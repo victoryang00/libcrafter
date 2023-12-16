@@ -48,9 +48,9 @@ namespace Crafter {
 
         void ReDefineActiveFields();
 
-        static const byte FieldKind = 0;
-        static const byte FieldLength = 1;
-        static const byte FieldShift = 2;
+        static const byte_ FieldKind = 0;
+        static const byte_ FieldLength = 1;
+        static const byte_ FieldShift = 2;
 
     public:
 
@@ -58,28 +58,28 @@ namespace Crafter {
 
         enum { PROTO = 0x9008 };
 
-        void SetKind(const byte& value) {
+        void SetKind(const byte_& value) {
             SetFieldValue(FieldKind,value);
         };
 
-        void SetLength(const byte& value) {
+        void SetLength(const byte_& value) {
             SetFieldValue(FieldLength,value);
         };
 
-        void SetShift(const byte& value) {
+        void SetShift(const byte_& value) {
             SetFieldValue(FieldShift,value);
         };
 
-        byte  GetKind() const {
-            return GetFieldValue<byte>(FieldKind);
+        byte_  GetKind() const {
+            return GetFieldValue<byte_>(FieldKind);
         };
 
-        byte  GetLength() const {
-            return GetFieldValue<byte>(FieldLength);
+        byte_  GetLength() const {
+            return GetFieldValue<byte_>(FieldLength);
         };
 
-        byte  GetShift() const {
-            return GetFieldValue<byte>(FieldShift);
+        byte_  GetShift() const {
+            return GetFieldValue<byte_>(FieldShift);
         };
 
         ~TCPOptionWindowScale() { /* Destructor */ };

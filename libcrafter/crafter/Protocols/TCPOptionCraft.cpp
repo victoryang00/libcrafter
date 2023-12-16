@@ -85,7 +85,7 @@ vector<TCPOptionSACK::Pair> TCPOptionSACK::GetBlocks() const {
 	/* Get payload */
 	size_t payload_size = GetPayloadSize();
 	if( payload_size > 0) {
-		const byte* raw_data = GetPayload().GetRawPointer();
+		const byte_* raw_data = GetPayload().GetRawPointer();
 		/* Cast to 32 bit numbers */
 		const word* edges = (const word *)(raw_data);
 
@@ -114,7 +114,7 @@ void TCPOptionSACK::SetBlocks(const std::vector<TCPOptionSACK::Pair>& blocks) {
 	}
 
 	/* Finally, set the payload with the data */
-	SetPayload((const byte*)blocks_data,blocks.size()*2*sizeof(word));
+	SetPayload((const byte_*)blocks_data, blocks.size() * 2 * sizeof(word));
 	delete[] blocks_data;
 }
 
@@ -126,9 +126,9 @@ void TCPOptionSACK::Pair::Print(ostream& str) const {
 #define EDO_HDRLEN_OFF 0
 #define EDO_SEGLEN_OFF 2
 
-const byte TCPOptionEDO::EDOREQUEST = 2;
-const byte TCPOptionEDO::EDO = 4;
-const byte TCPOptionEDO::EDOEXT = 6;
+const byte_ TCPOptionEDO::EDOREQUEST = 2;
+const byte_ TCPOptionEDO::EDO = 4;
+const byte_ TCPOptionEDO::EDOEXT = 6;
 
 
 void TCPOptionEDO::UpdateLengths() {
@@ -170,10 +170,10 @@ void TCPOptionEDO::UpdateLengths() {
 	}
 
 	short_word net_order = htons(header_length);
-	AddPayload((byte*)&net_order, sizeof(net_order));
+	AddPayload((byte_*)&net_order, sizeof(net_order));
 	if (GetLength() == TCPOptionEDO::EDOEXT) {
 		net_order = htons(segment_length);
-		AddPayload((byte*)&net_order, sizeof(net_order));
+		AddPayload((byte_*)&net_order, sizeof(net_order));
 	}
 }
 

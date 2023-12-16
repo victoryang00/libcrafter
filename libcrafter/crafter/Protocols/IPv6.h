@@ -52,14 +52,14 @@ namespace Crafter {
 
         void ParseLayerData(ParseInfo* info);
 
-        static const byte FieldVersion = 0;
-        static const byte FieldTrafficClass = 1;
-        static const byte FieldFlowLabel = 2;
-        static const byte FieldPayloadLength = 3;
-        static const byte FieldNextHeader = 4;
-        static const byte FieldHopLimit = 5;
-        static const byte FieldSourceIP = 6;
-        static const byte FieldDestinationIP = 7;
+        static const byte_ FieldVersion = 0;
+        static const byte_ FieldTrafficClass = 1;
+        static const byte_ FieldFlowLabel = 2;
+        static const byte_ FieldPayloadLength = 3;
+        static const byte_ FieldNextHeader = 4;
+        static const byte_ FieldHopLimit = 5;
+        static const byte_ FieldSourceIP = 6;
+        static const byte_ FieldDestinationIP = 7;
 
     public:
 
@@ -83,11 +83,11 @@ namespace Crafter {
             SetFieldValue(FieldPayloadLength,value);
         };
 
-        void SetNextHeader(const byte& value) {
+        void SetNextHeader(const byte_& value) {
             SetFieldValue(FieldNextHeader,value);
         };
 
-        void SetHopLimit(const byte& value) {
+        void SetHopLimit(const byte_& value) {
             SetFieldValue(FieldHopLimit,value);
         };
 
@@ -115,12 +115,12 @@ namespace Crafter {
             return GetFieldValue<short_word>(FieldPayloadLength);
         };
 
-        byte  GetNextHeader() const {
-            return GetFieldValue<byte>(FieldNextHeader);
+        byte_  GetNextHeader() const {
+            return GetFieldValue<byte_>(FieldNextHeader);
         };
 
-        byte  GetHopLimit() const {
-            return GetFieldValue<byte>(FieldHopLimit);
+        byte_  GetHopLimit() const {
+            return GetFieldValue<byte_>(FieldHopLimit);
         };
 
         std::string  GetSourceIP() const {
@@ -131,16 +131,16 @@ namespace Crafter {
             return GetFieldValue<std::string>(FieldDestinationIP);
         };
 
-	 byte* GetRawSourceIP() const {
+	 byte_* GetRawSourceIP() const {
             FieldInfo* ptr = Fields[FieldSourceIP];
             IPv6Address* ip =  dynamic_cast<IPv6Address*>(ptr);
-            return (byte*) *ip;
+            return (byte_*) *ip;
         };
         
-        byte* GetRawDestinationIP() const {
+        byte_* GetRawDestinationIP() const {
             FieldInfo* ptr = Fields[FieldDestinationIP];
             IPv6Address* ip =  dynamic_cast<IPv6Address*>(ptr);
-            return (byte*) *ip;
+            return (byte_*) *ip;
         };
 
         /* Return the corresponding next header value for the given protoid */

@@ -48,7 +48,7 @@ namespace Crafter {
 		word length;   /* Length of the field in bits) */
 
 		/* --- Flag if the field was set by the user */
-		byte field_set;
+		byte_ field_set;
 
 		/* --- Virtual private functions */
 
@@ -59,10 +59,10 @@ namespace Crafter {
 		FieldInfo(const std::string& name, word nword, word bitpos, word length);
 
 		/* Write into the buffer */
-		virtual void Write(byte* raw_data) const = 0;
+		virtual void Write(byte_* raw_data) const = 0;
 
 		/* Get data from the buffer */
-		virtual void Read(const byte* raw_data) = 0;
+		virtual void Read(const byte_* raw_data) = 0;
 
 		/* Ostream operator of the field */
 		friend std::ostream& operator<<(std::ostream& str, FieldInfo const& data);
@@ -84,7 +84,7 @@ namespace Crafter {
 		word GetLength() const {return this->length;};
 		word GetEnd() const {return (this->bitpos + this->length - 1);};
 		std::string GetName() const {return this->name;};
-		byte IsFieldSet() const {return this->field_set;};
+		byte_ IsFieldSet() const {return this->field_set;};
 
 		void PrintDebug() const;
 

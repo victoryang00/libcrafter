@@ -39,12 +39,12 @@ namespace Crafter {
 	Protocol Protocol::ProtoFactory ;
 
 	/* Verbose mode flag */
-	byte ShowWarnings;
+	byte_ ShowWarnings;
 
 }
 
 
-void Crafter::Verbose(byte value) {
+void Crafter::Verbose(byte_ value) {
 	Crafter::ShowWarnings = value;
 }
 
@@ -62,8 +62,8 @@ short_word Crafter::Layer::CheckBinding() const {
 	if(it != BindTable.end()) {
 
 		/* Allocate space for layers */
-		byte* this_layer = new byte[GetSize()];
-		byte* comp_layer = new byte[GetSize()];
+		byte_* this_layer = new byte_[GetSize()];
+		byte_* comp_layer = new byte_[GetSize()];
 
 		/* Iterate through each BindPair */
 		vector<Layer::BindPair>::const_iterator it_bind;
@@ -122,10 +122,10 @@ void Crafter::Layer::HexDump(ostream& str) const {
 
 	size_t  lSize = bytes_size;
 
-	byte *pAddressIn = new byte[lSize];
+	byte_ *pAddressIn = new byte_[lSize];
 
 	for (size_t i = 0 ; i < size ; i++)
-		pAddressIn[i] = ((byte *)raw_data)[i];
+		pAddressIn[i] = ((byte_ *)raw_data)[i];
 
 	LayerPayload.GetPayload(pAddressIn + size);
 
@@ -187,7 +187,7 @@ void Crafter::Layer::RawString(ostream& str) const {
 	/* Print raw data in hexadecimal format */
 	for(size_t i = 0 ; i < size ; i++) {
 		str << "\\x";
-		str << std::hex << (unsigned int)((byte *)raw_data)[i];
+		str << std::hex << (unsigned int)((byte_ *)raw_data)[i];
 	}
 
 	LayerPayload.RawString(str);
@@ -236,13 +236,13 @@ void Crafter::Layer::allocate_bytes(size_t nbytes) {
 	bytes_size = nbytes;
 
 	/* Allocate the raw data buffer */
-	raw_data = new byte[nbytes];
+	raw_data = new byte_[nbytes];
 
 	/* And set the buffer to zero */
 	memset(raw_data, 0, size);
 }
 
-size_t Crafter::Layer::GetData(byte* data) const {
+size_t Crafter::Layer::GetData(byte_* data) const {
 	/* Copy the data */
 	if (raw_data)
 		memcpy(data,raw_data,GetHeaderSize());
@@ -258,7 +258,7 @@ size_t Crafter::Layer::GetData(byte* data) const {
 
 }
 
-size_t Crafter::Layer::GetRawData(byte* data) const {
+size_t Crafter::Layer::GetRawData(byte_* data) const {
 	/* Copy the data */
 	if (raw_data)
 		memcpy(data,raw_data,GetHeaderSize());
@@ -269,7 +269,7 @@ size_t Crafter::Layer::GetRawData(byte* data) const {
 	return GetHeaderSize() + npayload;
 }
 
-size_t Crafter::Layer::PutData(const byte* data) {
+size_t Crafter::Layer::PutData(const byte_* data) {
 	/* Set the fields from the data provided */
 	Fields.ApplyAll(&FieldInfo::Read,data);
 
@@ -315,13 +315,13 @@ size_t Crafter::Layer::GetRemainingSize() const {
 /* Payload manipulation functions */
 
 /* Set payload */
-void Crafter::Layer::SetPayload (const byte *data, int ndata) {
+void Crafter::Layer::SetPayload (const byte_ *data, int ndata) {
 	LayerPayload.SetPayload(data,ndata);
 	bytes_size = size + LayerPayload.GetSize();
 }
 
 /* Add more stuff to the payload */
-void Crafter::Layer::AddPayload (const byte* data, int ndata) {
+void Crafter::Layer::AddPayload (const byte_* data, int ndata) {
 	LayerPayload.AddPayload(data,ndata);
 	bytes_size = size + LayerPayload.GetSize();
 }
@@ -351,7 +351,7 @@ void Crafter::Layer::AddPayload (const Payload& data) {
 }
 
 /* Copy the data into the pointer and returns the number of bytes copied */
-size_t Crafter::Layer::GetPayload(byte* dst) const {
+size_t Crafter::Layer::GetPayload(byte_* dst) const {
 	return LayerPayload.GetPayload(dst);
 }
 
@@ -374,12 +374,12 @@ Crafter::Layer::Layer(const Layer& layer) : raw_data(0) {
 	/* Copy the fields from the other layer */
 	Fields = layer.Fields;
 
-	PutData((const byte *)layer.raw_data);
+	PutData((const byte_ *)layer.raw_data);
 
 	/* Copy the payload, if any */
 	size_t npayload = layer.LayerPayload.GetSize();
 
-	byte* payload = new byte[npayload];
+	byte_* payload = new byte_[npayload];
 
 	layer.LayerPayload.GetPayload(payload);
 
@@ -421,12 +421,12 @@ void Crafter::Layer::Clone(const Layer& layer) {
 	/* Copy the fields from the other layer */
 	Fields = layer.Fields;
 
-	PutData((const byte *)layer.raw_data);
+	PutData((const byte_ *)layer.raw_data);
 
 	/* Copy the payload, if any */
 	size_t npayload = layer.LayerPayload.GetSize();
 
-	byte* payload = new byte[npayload];
+	byte_* payload = new byte_[npayload];
 
 	layer.LayerPayload.GetPayload(payload);
 
@@ -441,7 +441,7 @@ FieldInfo* Crafter::Layer::GetFieldPtr(size_t nfield) {
 	return Fields[nfield];
 }
 
-byte Crafter::Layer::IsFieldSet(size_t nfield) const {
+byte_ Crafter::Layer::IsFieldSet(size_t nfield) const {
 	return Fields[nfield]->IsFieldSet();
 }
 
@@ -453,7 +453,7 @@ void Crafter::Layer::ResetField(size_t nfield) {
 	Fields[nfield]->ResetField();
 }
 
-byte Crafter::RNG8() {return rand()%256; }
+byte_ Crafter::RNG8() {return rand() % 256; }
 short_word Crafter::RNG16() {return rand()%65536; }
 word Crafter::RNG32() {return 2 * rand(); }
 

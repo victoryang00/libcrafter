@@ -33,7 +33,7 @@ using namespace Crafter;
 
 namespace Crafter {
 	extern /* Verbose mode flag */
-	byte ShowWarnings;
+	byte_ ShowWarnings;
 }
 
 void Crafter::PrintMessage(uint16_t code, const string& routine, const string& message) {

@@ -40,9 +40,9 @@ namespace Crafter {
 
         void Craft();
 
-        static const byte FieldType = 0;
-        static const byte FieldCode = 1;
-        static const byte FieldCheckSum = 2;
+        static const byte_ FieldType = 0;
+        static const byte_ FieldCode = 1;
+        static const byte_ FieldCheckSum = 2;
 
     public:
 
@@ -50,11 +50,11 @@ namespace Crafter {
 
         ICMPv6Layer();
 
-        void SetType(const byte& value) {
+        void SetType(const byte_& value) {
             SetFieldValue(FieldType,value);
         };
 
-        void SetCode(const byte& value) {
+        void SetCode(const byte_& value) {
             SetFieldValue(FieldCode,value);
         };
 
@@ -62,12 +62,12 @@ namespace Crafter {
             SetFieldValue(FieldCheckSum,value);
         };
 
-        byte  GetType() const {
-            return GetFieldValue<byte>(FieldType);
+        byte_  GetType() const {
+            return GetFieldValue<byte_>(FieldType);
         };
 
-        byte  GetCode() const {
-            return GetFieldValue<byte>(FieldCode);
+        byte_  GetCode() const {
+            return GetFieldValue<byte_>(FieldCode);
         };
 
         short_word  GetCheckSum() const {

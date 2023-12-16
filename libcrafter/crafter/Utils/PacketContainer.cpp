@@ -42,7 +42,7 @@ void Crafter::ClosePcapDumper(pcap_t* pd, pcap_dumper_t* pdumper) {
     pcap_dump_close(pdumper);
 }
 
-void Crafter::DumperPcap(pcap_dumper_t* pdumper, struct pcap_pkthdr* header, const byte* raw_data) {
+void Crafter::DumperPcap(pcap_dumper_t* pdumper, struct pcap_pkthdr* header, const byte_* raw_data) {
     pcap_dump(reinterpret_cast<u_char*>(pdumper), header, raw_data);
 }
 

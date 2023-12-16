@@ -83,7 +83,7 @@ Layer* IPv6::GetNextLayer(ParseInfo *info, short_word network_layer) {
 		return ICMPv6Layer::Build(icmpv6_layer);
 	} else if (network_layer == (IPv6RoutingHeader::PROTO >> 8)) {
         /* Get Routing Header Type */
-        byte routing_type = (info->raw_data + info->offset)[2];
+        byte_ routing_type = (info->raw_data + info->offset)[2];
         return IPv6RoutingHeader::Build(routing_type);
     } else
         return Protocol::AccessFactory()->GetLayerByID(network_layer);

@@ -49,7 +49,7 @@ void IP::Craft() {
 	}
 
 	/* Array for the option data */
-	byte ip_data[IPHDRSIZE + MAXOPT];
+	byte_ ip_data[IPHDRSIZE + MAXOPT];
 	memset(ip_data, 0, IPHDRSIZE + MAXOPT);
 
 	size_t option_length = 0;

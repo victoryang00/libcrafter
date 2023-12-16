@@ -244,12 +244,12 @@ int Crafter::SocketSender::BindRawSocketToInterface(const std::string &device,
     return 0;
 }
 
-int Crafter::SocketSender::SendLinkSocket(int rawsock, byte *pkt, size_t pkt_len)
+int Crafter::SocketSender::SendLinkSocket(int rawsock, byte_ *pkt, size_t pkt_len)
 {
 	return write(rawsock, pkt, pkt_len);
 }
 
-int Crafter::SocketSender::SendRawSocket(int rawsock, struct sockaddr* din, size_t size_dst, byte *pkt, size_t pkt_len)
+int Crafter::SocketSender::SendRawSocket(int rawsock, struct sockaddr* din, size_t size_dst, byte_ *pkt, size_t pkt_len)
 {
 	int ret;
 
@@ -432,7 +432,7 @@ route6_get_ether(struct in6_addr *dst, u_char *lladdr)
 
 #endif
 
-int Crafter::SocketSender::SendSocket(int rawsock, word proto_id, byte *pkt, size_t pkt_len) {
+int Crafter::SocketSender::SendSocket(int rawsock, word proto_id, byte_ *pkt, size_t pkt_len) {
 	if(proto_id == IP::PROTO) {
 		/* Raw socket, IPv4 */
 		struct sockaddr_in din;
@@ -452,7 +452,7 @@ int Crafter::SocketSender::SendSocket(int rawsock, word proto_id, byte *pkt, siz
 			u_char src[6];
 			u_short proto;
 		} __attribute__((packed)) *ether;
-		byte *new_pkt = new byte[pkt_len + sizeof(*ether)];
+		byte_ *new_pkt = new byte_[pkt_len + sizeof(*ether)];
 		struct in6_addr addr;
 
 		ether = (struct llhdr *)new_pkt;

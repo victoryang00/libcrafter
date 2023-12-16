@@ -38,7 +38,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 namespace Crafter {
 
 	template <size_t size>
-	class BytesField : public Field<std::vector<byte> > {
+	class BytesField : public Field<std::vector<byte_> > {
 
 		size_t nword;
 		size_t nbyte;
@@ -51,9 +51,9 @@ namespace Crafter {
 	public:
 		BytesField(const std::string& name, size_t nword, size_t nbyte);
 
-		void Write(byte* raw_data) const;
+		void Write(byte_* raw_data) const;
 
-		void Read(const byte* raw_data);
+		void Read(const byte_* raw_data);
 
 		FieldInfo* Clone() const;
 
@@ -65,7 +65,7 @@ namespace Crafter {
 
 template<size_t size>
 Crafter::BytesField<size>::BytesField(const std::string& name, size_t nword, size_t nbyte) :
-							Field<std::vector<byte> > (name,nword,nbyte*8,8*size),
+							Field<std::vector<byte_> > (name, nword, nbyte * 8, 8 * size),
 							nword(nword), nbyte(nbyte) {
 	offset = nword * 4 + nbyte;
 	human.reserve(size);
@@ -73,14 +73,14 @@ Crafter::BytesField<size>::BytesField(const std::string& name, size_t nword, siz
 }
 
 template<size_t size>
-void Crafter::BytesField<size>::Write(byte* raw_data) const {
-	memset(raw_data + offset,0,size * sizeof(byte));
+void Crafter::BytesField<size>::Write(byte_* raw_data) const {
+	memset(raw_data + offset,0,size * sizeof(byte_));
 	for(size_t i = 0 ; i < size && i < human.size() ; i++)
 		raw_data[offset + i] = human[i];
 }
 
 template<size_t size>
-void Crafter::BytesField<size>::Read(const byte* raw_data) {
+void Crafter::BytesField<size>::Read(const byte_* raw_data) {
 	human.reserve(size);
 	human.resize(size);
 	for(size_t i = 0 ; i < size ; i++)

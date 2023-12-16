@@ -36,7 +36,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 typedef uint32_t word;
 typedef uint16_t short_word;
-typedef uint8_t byte;
+typedef uint8_t byte_;
 
 /* Functions for manipulating bits on a word */
 
@@ -46,25 +46,25 @@ namespace Crafter {
 	void PrintBits (word value);
 
 	/* Set a bit */
-	word SetBit(word value, byte bit);
+	word SetBit(word value, byte_ bit);
 
 	/* Reset a bit */
-	word ResetBit(word value, byte bit);
+	word ResetBit(word value, byte_ bit);
 
 	/* Test a bit */
-	word TestBit(word value, byte bit);
+	word TestBit(word value, byte_ bit);
 
 	/* Shift bits to right ntimes */
-	word ShiftRight(word value, byte ntimes);
+	word ShiftRight(word value, byte_ ntimes);
 
 	/* Shift bits to right ntimes */
-	word ShiftLeft(word value, byte ntimes);
+	word ShiftLeft(word value, byte_ ntimes);
 
 	/* Clear range of bits (including ebit) */
-	word ClearRange(word value, byte ibit, byte ebit);
+	word ClearRange(word value, byte_ ibit, byte_ ebit);
 
 	/* Clear all bits except the range specified */
-	word ClearComplementRange(word value, byte ibit, byte ebit);
+	word ClearComplementRange(word value, byte_ ibit, byte_ ebit);
 
 #ifndef htonll
 	uint64_t htonll(uint64_t value);

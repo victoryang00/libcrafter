@@ -53,7 +53,7 @@ namespace Crafter {
 
         virtual void SetOption(const word& value) = 0;
 
-        virtual void SetLength(const byte& value) = 0;
+        virtual void SetLength(const byte_& value) = 0;
 
         virtual word  GetCopyFlag() const = 0;
 
@@ -61,9 +61,9 @@ namespace Crafter {
 
         virtual word  GetOption() const = 0;
 
-        virtual byte  GetLength() const = 0;
+        virtual byte_  GetLength() const = 0;
 
-        /* Build IP options from first byte */
+        /* Build IP options from first byte_ */
         static IPOptionLayer* Build(int opt);
 
         ~IPOptionLayer() { /* Destructor */ };

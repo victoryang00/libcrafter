@@ -44,7 +44,7 @@ void ICMPExtension::Craft() {
 		size_t total_size = GetRemainingSize();
 		if ( (total_size%2) != 0 ) total_size++;
 
-		byte* buff_data = new byte[total_size];
+		byte_* buff_data = new byte_[total_size];
 
 		buff_data[total_size - 1] = 0x00;
 

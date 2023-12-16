@@ -49,12 +49,12 @@ namespace Crafter {
 
         void ParseLayerData(ParseInfo* info);
 
-        static const byte FieldNextHeader = 0;
-        static const byte FieldReserved = 1;
-        static const byte FieldFragmentOffset = 2;
-        static const byte FieldRes = 3;
-        static const byte FieldMflag = 4;
-        static const byte FieldIdentification = 5;
+        static const byte_ FieldNextHeader = 0;
+        static const byte_ FieldReserved = 1;
+        static const byte_ FieldFragmentOffset = 2;
+        static const byte_ FieldRes = 3;
+        static const byte_ FieldMflag = 4;
+        static const byte_ FieldIdentification = 5;
 
     public:
 
@@ -62,11 +62,11 @@ namespace Crafter {
 
         IPv6FragmentationHeader();
 
-        void SetNextHeader(const byte& value) {
+        void SetNextHeader(const byte_& value) {
             SetFieldValue(FieldNextHeader,value);
         };
 
-        void SetReserved(const byte& value) {
+        void SetReserved(const byte_& value) {
             SetFieldValue(FieldReserved,value);
         };
 
@@ -86,12 +86,12 @@ namespace Crafter {
             SetFieldValue(FieldIdentification,value);
         };
 
-        byte  GetNextHeader() const {
-            return GetFieldValue<byte>(FieldNextHeader);
+        byte_  GetNextHeader() const {
+            return GetFieldValue<byte_>(FieldNextHeader);
         };
 
-        byte  GetReserved() const {
-            return GetFieldValue<byte>(FieldReserved);
+        byte_  GetReserved() const {
+            return GetFieldValue<byte_>(FieldReserved);
         };
 
         word  GetFragmentOffset() const {

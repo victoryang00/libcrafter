@@ -69,7 +69,7 @@ namespace Crafter {
 		 * If the function returns zero means that the PSH segment is
 		 * duplicated. Else, means the data was pushed
 		 */
-		byte Push(word seq, Crafter::Payload& buffer);
+		byte_ Push(word seq, Crafter::Payload& buffer);
 
 		/* Destructor */
 		virtual ~TCPBuffer() { /*  */ };
@@ -139,19 +139,19 @@ namespace Crafter {
 		short_word status;
 
 		/* Send flag -- This flag is set to one if the receiver confirm with an ack our data*/
-		byte send_flag;
+		byte_ send_flag;
 
 		/* Sync flag, this is set to one one the connection in synchronized */
-		byte sync_flag;
+		byte_ sync_flag;
 
 		/* Read flag, this is set to one when the buffer is ready for reading */
-		byte read_flag;
+		byte_ read_flag;
 
 		/*
 		 * Hold flag, this is set to one if the connection is on a hold state. That means that the connections
 		 * parameters aren't updated in spite of uncomming packets.
 		 */
-		byte hold_flag;
+		byte_ hold_flag;
 
 		/* Structure for timing */
 		struct timespec tm;
@@ -259,7 +259,7 @@ namespace Crafter {
 		void Sync(word _seq = 0);
 
 		/* Send data on buffer */
-		void Send(const byte* buffer, size_t size);
+		void Send(const byte_* buffer, size_t size);
 		void Send(const char* buffer);
 
 		/* Set a Read handler function */
@@ -267,7 +267,7 @@ namespace Crafter {
 			this->read_handle = read_handle ; this->read_handle_arg = read_handle_arg;
 		};
 		/* Read function, put a payload after a PSH packet. If the connection is closed, the functions returns zero */
-		byte Read(Payload& payload);
+		byte_ Read(Payload& payload);
 
 		/* Hold and unhold the connection */
 		void Hold() { pthread_mutex_lock (&mutex); hold_flag = 1; pthread_mutex_unlock (&mutex);};
@@ -280,7 +280,7 @@ namespace Crafter {
 		void Reset();
 
 		/* Get the status of the connection */
-		byte GetStatus() const {return status;};
+		byte_ GetStatus() const {return status;};
 
 		virtual ~TCPConnection();
 	};

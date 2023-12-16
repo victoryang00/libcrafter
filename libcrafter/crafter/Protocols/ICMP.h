@@ -36,7 +36,7 @@ namespace Crafter {
 
         void DefineProtocol();
 
-		byte MapTypeNumber(short_word type);
+		byte_ MapTypeNumber(short_word type);
 
         Constructor GetConstructor() const {
             return ICMP::ICMPConstFunc;
@@ -54,16 +54,16 @@ namespace Crafter {
 
         void ParseLayerData(ParseInfo* info);
 
-        static const byte FieldType = 0;
-        static const byte FieldCode = 1;
-        static const byte FieldCheckSum = 2;
-        static const byte FieldRestOfHeader = 3;
-        static const byte FieldIdentifier = 4;
-        static const byte FieldSequenceNumber = 5;
-        static const byte FieldPointer = 6;
-        static const byte FieldGateway = 7;
-        static const byte FieldLength = 8;
-        static const byte FieldMTUNextHop = 9;
+        static const byte_ FieldType = 0;
+        static const byte_ FieldCode = 1;
+        static const byte_ FieldCheckSum = 2;
+        static const byte_ FieldRestOfHeader = 3;
+        static const byte_ FieldIdentifier = 4;
+        static const byte_ FieldSequenceNumber = 5;
+        static const byte_ FieldPointer = 6;
+        static const byte_ FieldGateway = 7;
+        static const byte_ FieldLength = 8;
+        static const byte_ FieldMTUNextHop = 9;
 
     public:
 
@@ -72,34 +72,34 @@ namespace Crafter {
 		/* ------- Messages types --------- */
 
 		/* +++ Other +++ */
-		static const byte SourceQuench;
-		static const byte EchoRedirect;
+		static const byte_ SourceQuench;
+		static const byte_ EchoRedirect;
 
 		/* +++ Error messages +++ */
-		static const byte DestinationUnreachable;
-		static const byte TimeExceeded;
-		static const byte ParameterProblem;
+		static const byte_ DestinationUnreachable;
+		static const byte_ TimeExceeded;
+		static const byte_ ParameterProblem;
 
 		/* +++ Request and replies +++ */
-		static const byte EchoRequest;
-		static const byte EchoReply;
+		static const byte_ EchoRequest;
+		static const byte_ EchoReply;
 
-		static const byte TimeStampRequest;
-		static const byte TimeStampReply;
+		static const byte_ TimeStampRequest;
+		static const byte_ TimeStampReply;
 
-		static const byte InformationRequest;
-		static const byte InformationReply;
+		static const byte_ InformationRequest;
+		static const byte_ InformationReply;
 
-		static const byte AddressMaskRequest;
-		static const byte AddressMaskReply;
+		static const byte_ AddressMaskRequest;
+		static const byte_ AddressMaskReply;
 
         ICMP();
 
-        void SetType(const byte& value) {
+        void SetType(const byte_& value) {
             SetFieldValue(FieldType,value);
         };
 
-        void SetCode(const byte& value) {
+        void SetCode(const byte_& value) {
             SetFieldValue(FieldCode,value);
         };
 
@@ -119,7 +119,7 @@ namespace Crafter {
             SetFieldValue(FieldSequenceNumber,value);
         };
 
-        void SetPointer(const byte& value) {
+        void SetPointer(const byte_& value) {
             SetFieldValue(FieldPointer,value);
         };
 
@@ -127,7 +127,7 @@ namespace Crafter {
             SetFieldValue(FieldGateway,value);
         };
 
-        void SetLength(const byte& value) {
+        void SetLength(const byte_& value) {
             SetFieldValue(FieldLength,value);
         };
 
@@ -135,12 +135,12 @@ namespace Crafter {
             SetFieldValue(FieldMTUNextHop,value);
         };
 
-        byte  GetType() const {
-            return GetFieldValue<byte>(FieldType);
+        byte_  GetType() const {
+            return GetFieldValue<byte_>(FieldType);
         };
 
-        byte  GetCode() const {
-            return GetFieldValue<byte>(FieldCode);
+        byte_  GetCode() const {
+            return GetFieldValue<byte_>(FieldCode);
         };
 
         short_word  GetCheckSum() const {
@@ -159,16 +159,16 @@ namespace Crafter {
             return GetFieldValue<short_word>(FieldSequenceNumber);
         };
 
-        byte  GetPointer() const {
-            return GetFieldValue<byte>(FieldPointer);
+        byte_  GetPointer() const {
+            return GetFieldValue<byte_>(FieldPointer);
         };
 
         std::string  GetGateway() const {
             return GetFieldValue<std::string>(FieldGateway);
         };
 
-        byte  GetLength() const {
-            return GetFieldValue<byte>(FieldLength);
+        byte_  GetLength() const {
+            return GetFieldValue<byte_>(FieldLength);
         };
 
         short_word GetMTU() {

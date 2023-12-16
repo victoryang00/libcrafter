@@ -52,19 +52,19 @@ namespace Crafter {
 
         void ParseLayerData(ParseInfo* info);
 
-        static const byte FieldVersion = 0;
-        static const byte FieldHeaderLength = 1;
-        static const byte FieldDiffServicesCP = 2;
-        static const byte FieldExpCongestionNot = 3;
-        static const byte FieldTotalLength = 4;
-        static const byte FieldIdentification = 5;
-        static const byte FieldFlags = 6;
-        static const byte FieldFragmentOffset = 7;
-        static const byte FieldTTL = 8;
-        static const byte FieldProtocol = 9;
-        static const byte FieldCheckSum = 10;
-        static const byte FieldSourceIP = 11;
-        static const byte FieldDestinationIP = 12;
+        static const byte_ FieldVersion = 0;
+        static const byte_ FieldHeaderLength = 1;
+        static const byte_ FieldDiffServicesCP = 2;
+        static const byte_ FieldExpCongestionNot = 3;
+        static const byte_ FieldTotalLength = 4;
+        static const byte_ FieldIdentification = 5;
+        static const byte_ FieldFlags = 6;
+        static const byte_ FieldFragmentOffset = 7;
+        static const byte_ FieldTTL = 8;
+        static const byte_ FieldProtocol = 9;
+        static const byte_ FieldCheckSum = 10;
+        static const byte_ FieldSourceIP = 11;
+        static const byte_ FieldDestinationIP = 12;
 
     public:
 
@@ -104,11 +104,11 @@ namespace Crafter {
             SetFieldValue(FieldFragmentOffset,value);
         };
 
-        void SetTTL(const byte& value) {
+        void SetTTL(const byte_& value) {
             SetFieldValue(FieldTTL,value);
         };
 
-        void SetProtocol(const byte& value) {
+        void SetProtocol(const byte_& value) {
             SetFieldValue(FieldProtocol,value);
         };
 
@@ -156,12 +156,12 @@ namespace Crafter {
             return GetFieldValue<word>(FieldFragmentOffset);
         };
 
-        byte  GetTTL() const {
-            return GetFieldValue<byte>(FieldTTL);
+        byte_  GetTTL() const {
+            return GetFieldValue<byte_>(FieldTTL);
         };
 
-        byte  GetProtocol() const {
-            return GetFieldValue<byte>(FieldProtocol);
+        byte_  GetProtocol() const {
+            return GetFieldValue<byte_>(FieldProtocol);
         };
 
         short_word  GetCheckSum() const {
@@ -176,16 +176,16 @@ namespace Crafter {
             return GetFieldValue<std::string>(FieldDestinationIP);
         };
 
-        byte* GetRawSourceIP() const {
+        byte_* GetRawSourceIP() const {
             FieldInfo* ptr = Fields[FieldSourceIP];
             IPAddress* ip =  dynamic_cast<IPAddress*>(ptr);
-            return (byte*) *ip;
+            return (byte_*) *ip;
         };
         
-        byte* GetRawDestinationIP() const {
+        byte_* GetRawDestinationIP() const {
             FieldInfo* ptr = Fields[FieldDestinationIP];
             IPAddress* ip =  dynamic_cast<IPAddress*>(ptr);
-            return (byte*) *ip;
+            return (byte_*) *ip;
         };
         
         ~IP() { /* Destructor */ };

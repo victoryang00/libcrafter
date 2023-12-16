@@ -30,7 +30,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 using namespace Crafter;
 using namespace std;
 
-static TCPOptionPad SetOptionKind(byte value) {
+static TCPOptionPad SetOptionKind(byte_ value) {
 	TCPOptionPad pad;
 	pad.SetKind(value);
 	return pad;
@@ -90,7 +90,7 @@ TCPOptionFastOpen::TCPOptionFastOpen() {
     ResetFields();
 }
 
-TCPOptionEDO::TCPOptionEDO(byte length) : TCPOption() {
+TCPOptionEDO::TCPOptionEDO(byte_ length) : TCPOption() {
 	SetName("TCPOptionEDO");
     SetprotoID(TCPOptionEDO::PROTO);
 

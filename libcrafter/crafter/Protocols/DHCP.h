@@ -51,29 +51,29 @@ namespace Crafter {
 
         void ParseLayerData(ParseInfo* info);
 
-        static const byte FieldOperationCode = 0;
-        static const byte FieldHardwareType = 1;
-        static const byte FieldHardwareLength = 2;
-        static const byte FieldHopCount = 3;
-        static const byte FieldTransactionID = 4;
-        static const byte FieldNumberOfSeconds = 5;
-        static const byte FieldFlags = 6;
-        static const byte FieldClientIP = 7;
-        static const byte FieldYourIP = 8;
-        static const byte FieldServerIP = 9;
-        static const byte FieldGatewayIP = 10;
-        static const byte FieldClientMAC = 11;
-        static const byte FieldZeroPadding = 12;
-        static const byte FieldServerHostName = 13;
-        static const byte FieldBootFile = 14;
+        static const byte_ FieldOperationCode = 0;
+        static const byte_ FieldHardwareType = 1;
+        static const byte_ FieldHardwareLength = 2;
+        static const byte_ FieldHopCount = 3;
+        static const byte_ FieldTransactionID = 4;
+        static const byte_ FieldNumberOfSeconds = 5;
+        static const byte_ FieldFlags = 6;
+        static const byte_ FieldClientIP = 7;
+        static const byte_ FieldYourIP = 8;
+        static const byte_ FieldServerIP = 9;
+        static const byte_ FieldGatewayIP = 10;
+        static const byte_ FieldClientMAC = 11;
+        static const byte_ FieldZeroPadding = 12;
+        static const byte_ FieldServerHostName = 13;
+        static const byte_ FieldBootFile = 14;
 
         void PrintPayload(std::ostream& str) const;
 
     public:
 
 		/* Some constant of the DHCP protocol */
-		static const byte Request;
-		static const byte Reply;
+		static const byte_ Request;
+		static const byte_ Reply;
 
 		enum { PROTO = 0xfff4 };
 
@@ -121,19 +121,19 @@ namespace Crafter {
 			return *this;
 		}
 
-        void SetOperationCode(const byte& value) {
+        void SetOperationCode(const byte_& value) {
             SetFieldValue(FieldOperationCode,value);
         };
 
-        void SetHardwareType(const byte& value) {
+        void SetHardwareType(const byte_& value) {
             SetFieldValue(FieldHardwareType,value);
         };
 
-        void SetHardwareLength(const byte& value) {
+        void SetHardwareLength(const byte_& value) {
             SetFieldValue(FieldHardwareLength,value);
         };
 
-        void SetHopCount(const byte& value) {
+        void SetHopCount(const byte_& value) {
             SetFieldValue(FieldHopCount,value);
         };
 
@@ -169,7 +169,7 @@ namespace Crafter {
             SetFieldValue(FieldClientMAC,value);
         };
 
-        void SetZeroPadding(const std::vector<byte> & value) {
+        void SetZeroPadding(const std::vector<byte_> & value) {
             SetFieldValue(FieldZeroPadding,value);
         };
 
@@ -181,20 +181,20 @@ namespace Crafter {
             SetFieldValue(FieldBootFile,value);
         };
 
-        byte  GetOperationCode() const {
-            return GetFieldValue<byte>(FieldOperationCode);
+        byte_  GetOperationCode() const {
+            return GetFieldValue<byte_>(FieldOperationCode);
         };
 
-        byte  GetHardwareType() const {
-            return GetFieldValue<byte>(FieldHardwareType);
+        byte_  GetHardwareType() const {
+            return GetFieldValue<byte_>(FieldHardwareType);
         };
 
-        byte  GetHardwareLength() const {
-            return GetFieldValue<byte>(FieldHardwareLength);
+        byte_  GetHardwareLength() const {
+            return GetFieldValue<byte_>(FieldHardwareLength);
         };
 
-        byte  GetHopCount() const {
-            return GetFieldValue<byte>(FieldHopCount);
+        byte_  GetHopCount() const {
+            return GetFieldValue<byte_>(FieldHopCount);
         };
 
         word  GetTransactionID() const {
@@ -229,8 +229,8 @@ namespace Crafter {
             return GetFieldValue<std::string>(FieldClientMAC);
         };
 
-        std::vector<byte>   GetZeroPadding() const {
-            return GetFieldValue<std::vector<byte> >(FieldZeroPadding);
+        std::vector<byte_>   GetZeroPadding() const {
+            return GetFieldValue<std::vector<byte_> >(FieldZeroPadding);
         };
 
         std::string  GetServerHostName() const {

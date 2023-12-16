@@ -40,28 +40,28 @@ using namespace std;
 /* ------- Messages types --------- */
 
 /* +++ Other +++ */
-const byte ICMP::SourceQuench = 4;
-const byte ICMP::EchoRedirect = 5;
+const byte_ ICMP::SourceQuench = 4;
+const byte_ ICMP::EchoRedirect = 5;
 
 /* +++ Error messages +++ */
-const byte ICMP::DestinationUnreachable = 3;
-const byte ICMP::TimeExceeded = 11;
-const byte ICMP::ParameterProblem = 12;
+const byte_ ICMP::DestinationUnreachable = 3;
+const byte_ ICMP::TimeExceeded = 11;
+const byte_ ICMP::ParameterProblem = 12;
 
 /* +++ Request and replies +++ */
-const byte ICMP::EchoRequest = 8;
-const byte ICMP::EchoReply = 0;
+const byte_ ICMP::EchoRequest = 8;
+const byte_ ICMP::EchoReply = 0;
 
-const byte ICMP::TimeStampRequest = 13;
-const byte ICMP::TimeStampReply = 14;
+const byte_ ICMP::TimeStampRequest = 13;
+const byte_ ICMP::TimeStampReply = 14;
 
-const byte ICMP::InformationRequest = 15;
-const byte ICMP::InformationReply = 16;
+const byte_ ICMP::InformationRequest = 15;
+const byte_ ICMP::InformationReply = 16;
 
-const byte ICMP::AddressMaskRequest = 17;
-const byte ICMP::AddressMaskReply = 18;
+const byte_ ICMP::AddressMaskRequest = 17;
+const byte_ ICMP::AddressMaskReply = 18;
 
-byte ICMP::MapTypeNumber(short_word type) {
+byte_ ICMP::MapTypeNumber(short_word type) {
 	/* Get the type of message in function of the base type */
 	if(type == ICMPLayer::DestinationUnreachable)
 		return ICMP::DestinationUnreachable;
@@ -173,7 +173,7 @@ void ICMP::Craft() {
 		size_t total_size = GetRemainingSize();
 		if ( (total_size%2) != 0 ) total_size++;
 
-		byte* buff_data = new byte[total_size];
+		byte_* buff_data = new byte_[total_size];
 
 		buff_data[total_size - 1] = 0x00;
 

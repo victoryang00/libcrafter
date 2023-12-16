@@ -47,9 +47,9 @@ namespace Crafter {
 
 		MACAddress(const std::string& name, size_t nword, size_t nbyte);
 
-		void Write(byte* raw_data) const;
+		void Write(byte_* raw_data) const;
 
-		void Read(const byte* raw_data);
+		void Read(const byte_* raw_data);
 
 		FieldInfo* Clone() const;
 

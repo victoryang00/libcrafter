@@ -51,15 +51,15 @@ namespace Crafter {
 			size_t header_len;
     	};
 
-        virtual void SetKind(const byte& value) = 0;
+        virtual void SetKind(const byte_& value) = 0;
 
-        virtual void SetLength(const byte& value) = 0;
+        virtual void SetLength(const byte_& value) = 0;
 
-        virtual byte  GetKind() const = 0;
+        virtual byte_  GetKind() const = 0;
 
-        virtual byte  GetLength() const = 0;
+        virtual byte_  GetLength() const = 0;
 
-        /* Build TCP options from first byte */
+        /* Build TCP options from first byte_ */
         static TCPOptionLayer* Build(int opt, ParseInfo *info);
 
         ~TCPOptionLayer() { /* Destructor */ };

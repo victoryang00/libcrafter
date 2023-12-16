@@ -47,9 +47,9 @@ namespace Crafter {
 
         void ReDefineActiveFields();
 
-        static const byte FieldKind = 0;
-        static const byte FieldLength = 1;
-        static const byte FieldMaxSegSize = 2;
+        static const byte_ FieldKind = 0;
+        static const byte_ FieldLength = 1;
+        static const byte_ FieldMaxSegSize = 2;
 
     public:
 
@@ -57,11 +57,11 @@ namespace Crafter {
 
         TCPOptionMaxSegSize();
 
-        void SetKind(const byte& value) {
+        void SetKind(const byte_& value) {
             SetFieldValue(FieldKind,value);
         };
 
-        void SetLength(const byte& value) {
+        void SetLength(const byte_& value) {
             SetFieldValue(FieldLength,value);
         };
 
@@ -69,12 +69,12 @@ namespace Crafter {
             SetFieldValue(FieldMaxSegSize,value);
         };
 
-        byte  GetKind() const {
-            return GetFieldValue<byte>(FieldKind);
+        byte_  GetKind() const {
+            return GetFieldValue<byte_>(FieldKind);
         };
 
-        byte  GetLength() const {
-            return GetFieldValue<byte>(FieldLength);
+        byte_  GetLength() const {
+            return GetFieldValue<byte_>(FieldLength);
         };
 
         short_word  GetMaxSegSize() const {
